@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Greater Atlanta Dietetic Association</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -7,13 +7,17 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="/assets/gadaLogo6.png"></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="#">Navbar Link</a></li>
         </ul>
@@ -28,11 +32,11 @@
       Logged in to ADMIN MODE as <strong><%= current_user.email %></strong>.
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path  %>
+      <%= link_to "Admin Login", new_user_session_path  %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
   </body>
 </html>
