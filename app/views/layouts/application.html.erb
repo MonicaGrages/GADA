@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GADASite</title>
+    <title>Greater Atlanta Dietetic Association</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
     <% if user_signed_in? %>
       Logged in to ADMIN MODE as <strong><%= current_user.email %></strong>.
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
