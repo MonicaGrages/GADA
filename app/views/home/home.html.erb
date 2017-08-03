@@ -6,10 +6,8 @@
         <h5 class="header col s12 light">Join today to weigh in on nutrition.</h5>
       </div>
       <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button"
-          class="btn-large waves-effect waves-light orange">Join/Renew</a>
-        <a href="http://materializecss.com/getting-started.html" id="download-button"
-          class="btn-large waves-effect waves-light orange">Check Membership Status</a>
+        <%= link_to "Join or Renew", registration_path, class: "btn-large waves-effect waves-light orange" %>
+        <%= link_to "Check Membership Status", members_path, class: "btn-large waves-effect waves-light orange" %>
       </div>
       <br><br>
     </div>

@@ -8,4 +8,10 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  resources :members
+  resources :blogs
+  resources :events
+
+  get 'registration', to: "registration#index", as: "registration"
+
 end
