@@ -34,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'cancancan'
 
+#jquery install
+gem 'jquery-rails'
+#CSS framework
+gem 'materialize-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
