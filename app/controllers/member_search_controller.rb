@@ -5,18 +5,13 @@ class MemberSearchController < ApplicationController
       email = member_params["email"]
       @member = Member.find_by(email: email)
       now = Date.today
-      if @member.membership_expiration_date > now
-        puts "expiration date is greater than now"
-        puts @member.first_name
-        month = now.month
-        puts month
-        if month <= 5
-          expiration_year = now.year
-        elsif month >5
-          expiration_year = now.year + 1
+      if @member
+        if @member.membership_expiration_date > now
+          expiration_date = @member.membership_expiration_date.strftime("%D")
+          @message = "Your membership is current through #{expiration_date}"
+        else
+          @message = "Your membership expired on #{expiration_date}"
         end
-
-        @message = "Your membership is current through May 31, #{expiration_year}"
       else
         puts "That email address is not associated with a current member"
         @message = "That email address is not associated with a current member"
