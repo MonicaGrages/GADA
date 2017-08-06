@@ -15,6 +15,18 @@
  */
 
 #header-nav{
-  height: 150px;
-  padding: 5px;
+  height: 170px;
+}
+
+#nav-wrapper-container{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link{
+  display: flex;
+  align-items: center;
 }

@@ -12,12 +12,15 @@
 
   <body>
     <nav class="light-blue lighten-3" role="navigation" id="header-nav">
-      <div class="nav-wrapper container"><%= link_to image_tag("/assets/gadaLogo6.png"), root_path, class: "brand-logo", id: "logo-container"  %>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Navbar Link</a></li>
-          <li><a href="#">Navbar Link</a></li>
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
+      <div class="nav-wrapper container">
+        <div id="nav-wrapper-container">
+          <%= link_to image_tag("/assets/gadaLogo6.png"), root_path, class: "logo-link" %>
+          <ul id="header-nav-links" class="right hide-on-med-and-down">
+            <li><a href="#">Navbar Link</a></li>
+            <li><a href="#">Navbar Link</a></li>
+            <li><a href="#">Navbar Link</a></li>
+          </ul>
+        </div>
 
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#">Navbar Link</a></li>

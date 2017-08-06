@@ -1,13 +1,13 @@
 class MembersController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
 
-def index
-end
+  def index
+  end
 
-def show
-  @user = User.find_by()
-end
+  def show
+  end
 
-def new
-end
+  def new
+  end
 
 end

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   resources :events
 
   get 'registration', to: "registration#index", as: "registration"
+  get 'member_search', to: "member_search#index", as: "member_search"
+  get "member_search/results", to: "member_search#show", as: "member_search_results"
 
 end

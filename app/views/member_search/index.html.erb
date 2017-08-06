@@ -1,0 +1,11 @@
+<div class="container">
+  <%= form_for member_search_results_path, method: :get do |f|%>
+    <%= f.label :email, "Search by email address" %>
+    <%= f.text_field :email %>
+
+    <%= f.submit "Submit"%>
+  <% end %>
+</div>
+
+
+<h3><%= @message %></h3>
