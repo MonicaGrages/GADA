@@ -16,12 +16,6 @@ class MemberSearchController < ApplicationController
     end
   end
 
-  def show
-    puts "show method"
-    # puts params
-  end
-
-
   private
   def member_params
     params.require("/member_search/results")

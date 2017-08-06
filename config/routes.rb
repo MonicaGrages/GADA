@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get 'registration', to: "registration#index", as: "registration"
   get 'member_search', to: "member_search#index", as: "member_search"
   get "member_search/results", to: "member_search#show", as: "member_search_results"
+  get "/admin/menu", to: "admin#index", as: "admin"
 
 end
