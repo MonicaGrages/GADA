@@ -33,11 +33,11 @@
     </nav>
     <% if user_signed_in? %>
       Logged in to admin mode as <strong><%= current_user.email %></strong>.
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <%= link_to "Admin Menu", admin_path %>
+      <%= link_to "Admin Menu", admin_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <h5 class="notice header center green-text light"><%= notice %></h5>
+    <h5 class="alert header center red-text light"><%= alert %></h5>
 
     <%= yield %>
 

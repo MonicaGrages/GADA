@@ -17,6 +17,6 @@
 //= require materialize-sprockets
 
 $( document ).ready(function(){
-  console.log('jquery works');
+  $('select').material_select();
   $(".button-collapse").sideNav();
 })
