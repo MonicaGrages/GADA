@@ -2,9 +2,10 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  end
-
-  def show
+    @active_members = Member.where('membership_expiration_date > ?', Date.today)
+    @active_member_count = @active_members.count
+    @student_member_count = @active_members.where(membership_type: "student").count
+    @rd_member_count = @active_members.where(membership_type: "RD").count
   end
 
   def new
@@ -25,7 +26,7 @@ class MembersController < ApplicationController
       # if trying to add a member that is already current
       elsif @existing_member.membership_expiration_date >= @new_member.membership_expiration_date
         respond_to do |format|
-          puts "There is already a current member with the email #{@existing_member.email}. If you want to update this member's information, go back to the Admin menu and click 'Update Existing Member'."
+          puts "There is already a current member with the email #{@existing_member.email}. If you want to update this member's information, go back to the Admin menu and click 'Update Current Member Info'."
           format.html { redirect_to "/members/new", alert: "There is already a current member with the email #{@existing_member.email}. If you need to update this member's information, go back to the Admin Menu and click 'Update Existing Member'." }
         end
       end
@@ -36,6 +37,21 @@ class MembersController < ApplicationController
         else
           format.html { redirect_to "/members/new", alert: "Error adding member. Please make sure all information was filled in correctly and try again." }
         end
+      end
+    end
+  end
+
+  def edit
+    @member = Member.find(params[:id])
+  end
+
+  def update
+    @member = Member.find(params[:id])
+    respond_to do |format|
+      if @member.update(member_params)
+        format.html { redirect_to "/members", notice: "Member #{@member.first_name} #{@member.last_name} was successfully updated" }
+      else
+        format.html { redirect_to "/members/#{@member.id}/edit", alert: "Error updating member info. Please make sure all information was filled in correctly and try again." }
       end
     end
   end
