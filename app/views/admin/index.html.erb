@@ -2,51 +2,40 @@
   <h3 class="header center light">Admin Menu</h3>
 </div>
 
-
-<nav class="red lighten-2" role="navigation" id="admin-nav">
-<!--   <div class="nav-wrapper container">
-    <div id="nav-wrapper-container">
-      <ul id="admin-nav-links">
-        <li><%= link_to "Add new member", new_member_path %></li>
-        <li><%= link_to "View/Update Current Members", members_path %></li>
-        <li><a href="#">Add new blog post</a></li>
-        <li><a href="#">Update existing blog posts</a></li>
-        <li><a href="#">Add new calendar event</a></li>
-        <li><a href="#">Update existing calendar events</a></li>
-      </ul>
-    </div>
-  </div> -->
-      <div class="section">
-      <!--   Icon Section   -->
+<!--
+<nav class="red lighten-2" role="navigation" id="admin-nav"> -->
+      <div class="section" id="admin-nav">
       <div class="row">
         <div class="col s12 m4 center">
           <div class="icon-block">
-            <h2 class="center white-text"><i class="material-icons">group</i></h2>
+            <h2 class="center"><i class="material-icons">group</i></h2>
             <h5 class="center">Members</h5>
             <%= link_to "Add new member", new_member_path, class: "btn waves-effect waves-light" %>
-            <br>
-            <%= link_to "View/Update Members", members_path, class: "btn waves-effect waves-light" %>
+            <br><br>
+            <%= link_to "Current Members", members_path, class: "btn waves-effect waves-light" %>
           </div>
         </div>
 
         <div class="col s12 m4 center">
           <div class="icon-block">
-            <h2 class="center white-text"><i class="material-icons">group</i></h2>
+            <h2 class="center"><i class="material-icons">event</i></h2>
             <h5 class="center">Events</h5>
             <a href="#" class="btn waves-effect waves-light">Add New Event</a>
+            <br><br>
             <a href="#" class="btn waves-effect waves-light">Update Events</a>
           </div>
         </div>
 
         <div class="col s12 m4 center">
           <div class="icon-block">
-            <h2 class="center white-text"><i class="material-icons">group</i></h2>
+            <h2 class="center"><i class="material-icons">rss_feed</i></h2>
             <h5 class="center">Blog</h5>
             <a href="#" class="btn waves-effect waves-light">Add New Blog Post</a>
+            <br><br>
             <a href="#" class="btn waves-effect waves-light">Update Blog Posts</a>
           </div>
         </div>
       </div>
 
     </div>
-</nav>
+<!-- </nav> -->

@@ -15,15 +15,20 @@
  */
 
 #header-nav{
-  height: 170px;
+  height: 140px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 20px;
 }
 
-#nav-wrapper-container{
-  height: 100%;
+#header-nav-links{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  height: 100%;
+}
+
+.nav-link-text{
+  font-size: 20px;
 }
 
 .logo-link{
@@ -31,6 +36,12 @@
   align-items: center;
 }
 
+.admin-message{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
 .form-container{
   border: 1px solid gray;

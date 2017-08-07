@@ -13,29 +13,31 @@
 
   <body>
     <nav class="light-blue lighten-3" role="navigation" id="header-nav">
-      <div class="nav-wrapper container">
-        <div id="nav-wrapper-container">
-          <%= link_to image_tag("/assets/gadaLogo6.png"), root_path, class: "logo-link" %>
-          <ul id="header-nav-links" class="right hide-on-med-and-down">
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Membership</a></li>
-          </ul>
-        </div>
+    <div class="nav-wrapper">
+      <%= link_to image_tag("/assets/gadaLogo6.png"), root_path, class: "logo-link brand-logo" %>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
+      <ul id="header-nav-links" class="right hide-on-med-and-down">
+        <li><a class="nav-link-text" href="#">Events</a></li>
+        <li><a class="nav-link-text" href="#">Blog</a></li>
+        <li><a class="nav-link-text" href="#">Membership</a></li>
+      </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Membership</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-      </div>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Membership</a></li>
+      </ul>
+    </div>
+
     </nav>
-    <% if user_signed_in? %>
-      Logged in to admin mode as <strong><%= current_user.email %></strong>.
-      <%= link_to "Admin Menu", admin_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 
+    <% if user_signed_in? %>
+    <div class="admin-message">
+      <span>Logged in to admin mode as <strong><%= current_user.email %></strong>.</span>
+      <span><%= link_to "Admin Menu", admin_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %></span>
+    </div>
     <% end %>
+
     <h5 class="notice header center green-text light"><%= notice %></h5>
     <h5 class="alert header center red-text light"><%= alert %></h5>
 
@@ -68,7 +70,7 @@
           Logged in to admin mode as <strong><%= current_user.email %></strong>.
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to "Admin Login", new_user_session_path  %>
+          <%= link_to "Website Admin", new_user_session_path  %>
         <% end %>
         </div>
       </div>
