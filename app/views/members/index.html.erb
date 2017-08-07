@@ -1,7 +1,8 @@
 
-<div class="container">
+<div class="container center">
   <h3 class="header center light">Active GADA Members</h3>
-
+  <%= link_to "Add new member", new_member_path, class: "btn-large waves-effect waves-light orange" %>
+  <br><br>
   <h6 class="header center light">Current Member Count</h6>
   <ul class="center">
     <li>RDNs: <%= @rd_member_count %></li>
@@ -10,21 +11,21 @@
   </ul>
 
 
-  <table>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Membership Type</th>
+  <table class="members-index-table">
+    <tr class="members-index-tr">
+      <th class="members-index-th">First Name</th>
+      <th class="members-index-th">Last Name</th>
+      <th class="members-index-th">Email</th>
+      <th class="members-index-th">Membership Type</th>
       <th class="table-icons-column">Edit</th>
     </tr>
 
     <% @active_members.each do |member| %>
-      <tr>
-        <td><%= member.first_name %></td>
-        <td><%= member.last_name %></td>
-        <td><%= member.email %></td>
-        <td><%= member.membership_type %></td>
+      <tr class="members-index-tr">
+        <td class="members-index-td"><%= member.first_name %></td>
+        <td class="members-index-td"><%= member.last_name %></td>
+        <td class="members-index-td"><%= member.email %></td>
+        <td class="members-index-td"><%= member.membership_type %></td>
         <td class="edit-member-column">
           <%= link_to("/members/#{member.id}/edit") do %>
             <i class="material-icons">edit</i>

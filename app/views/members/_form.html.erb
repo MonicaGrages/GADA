@@ -1,37 +1,37 @@
-  <div class='form-container z-depth-3'>
-    <%= form_for @member, :url =>"/members/#{@member.id}" do |f| %>
-      <div class='form'>
-        <div class='input-field inline'>
-          <%= f.label :first_name, "First Name", :class => "active" %>
-          <%= f.text_field :first_name %>
-        </div>
-        <div class='input-field inline'>
-          <%= f.label :last_name, "Last Name", :class => "active" %>
-          <%= f.text_field :last_name %>
-        </div>
-        <div class='input-field inline'>
-          <%= f.label :email, "Email", :class => "active" %>
-          <%= f.text_field :email %>
-        </div>
-        <div class='input-field inline'>
-          <%= f.label :membership_type, "Membership Type", :class => "active" %>
-          <%= f.select (:membership_type) do %>
-            <% [['RDN', 'RD'], ['Student', 'student']].each do |c| -%>
-              <%= content_tag(:option, c.first, value: c.last) %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class='input-field inline'>
-          <%= f.label :membership_expiration_date, "Member Expiration", :class => "active" %>
-          <%= f.select (:membership_expiration_date) do %>
-            <% [['May 31, 2018', '2018-05-31'], ['May 31, 2019', '2019-05-31']].each do |c| -%>
-              <%= content_tag(:option, c.first, value: c.last) %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class='form_button_container'>
-          <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large' %>
-        </div>
+<div class='form-container z-depth-3'>
+  <%= form_for @member, :url =>"/members/#{@member.id}" do |f| %>
+    <div class='form'>
+      <div class='input-field inline'>
+        <%= f.label :first_name, "First Name", :class => "active" %>
+        <%= f.text_field :first_name %>
       </div>
-    <% end %>
-  </div>
+      <div class='input-field inline'>
+        <%= f.label :last_name, "Last Name", :class => "active" %>
+        <%= f.text_field :last_name %>
+      </div>
+      <div class='input-field inline'>
+        <%= f.label :email, "Email", :class => "active" %>
+        <%= f.text_field :email %>
+      </div>
+      <div class='input-field inline'>
+        <%= f.label :membership_type, "Membership Type", :class => "active" %>
+        <%= f.select (:membership_type) do %>
+          <% [['RDN', 'RD'], ['Student', 'student']].each do |c| -%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='input-field inline'>
+        <%= f.label :membership_expiration_date, "Member Expiration", :class => "active" %>
+        <%= f.select (:membership_expiration_date) do %>
+          <% [['May 31, 2018', '2018-05-31'], ['May 31, 2019', '2019-05-31']].each do |c| -%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='form_button_container'>
+        <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large' %>
+      </div>
+    </div>
+  <% end %>
+</div>
