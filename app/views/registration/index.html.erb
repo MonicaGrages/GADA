@@ -1,1 +1,31 @@
-put the paypal button here
+<div class="container">
+
+  <h3 class="header col s12 light">Join GADA or Renew Your Membership</h3>
+
+  <h5 class="header col s12 light">The GADA membership year runs from June 1 to May 31 annually.</h5>
+  <h5 class="header col s12 light">Annual Membership dues are $35 for RDNs and $20 for students.</h5>
+
+  <%= link_to "Check Current Membership Status", member_search_path, class: "btn-large waves-effect waves-light" %>
+
+
+  <form class="form-container" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <table>
+  <tr><td><input type="hidden" name="on0" value="Membership Type">Choose Membership Type From Dropdown:</td></tr><tr><td>
+  <select name="os0" id="membership-type-select">
+    <option value="RDN Membership">RDN Membership $36.32 USD</option>
+    <option value="Student Membership">Student Membership $20.88 USD</option>
+  </select> </td></tr>
+  </table>
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+  ">
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  </form>
+
+  <h6 class="header col s12 light">PayPal charges an additional fee of $1.32 and $0.88 for RD and student memberships respectively. If you prefer not to pay this additional fee, you can pay by check or cash at our next <a href="#">event</a> or mail a completed <a>membership form</a> with your payment to the address listed on the form.</h6>
+
+</div>
+
+
