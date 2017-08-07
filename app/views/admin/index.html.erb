@@ -1,10 +1,32 @@
-<h3>Admin Menu</h3>
-<nav>
-  <a>Add new members</a>
-  <a>Update member information</a>
-  <a>Add new blog post</a>
+<div class="container">
+  <h3 class="header center light">Admin Menu</h3>
+  <p>Current active members: <%= @active_member_count %></p>
+</div>
+
+<!-- <nav>
+  </a>
+  <a></a>
+  <a></a>
   <a>Update existing blog posts</a>
   <a>Add new calendar event</a>
   <a>Update existing calendar events</a>
-</nav>
+</nav> -->
 
+
+<nav class="red lighten-1" role="navigation">
+  <div class="nav-wrapper container">
+    <div id="nav-wrapper-container">
+      <ul id="admin-nav-links">
+        <li><%= link_to "Add new member", new_member_path %></li>
+        <li><a href="#">Update member information</a></li>
+        <li><a href="#">Add new blog post</a></li>
+        <li><a href="#">Update existing blog posts</a></li>
+        <li><a href="#">Add new calendar event</a></li>
+        <li><a href="#">Update existing calendar events</a></li>
+
+
+
+      </ul>
+    </div>
+  </div>
+</nav>

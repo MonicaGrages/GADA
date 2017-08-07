@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!
 
   def index
   end
@@ -8,6 +8,10 @@ class MembersController < ApplicationController
   end
 
   def new
+  end
+
+  def create
+
   end
 
 end
