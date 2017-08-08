@@ -18,12 +18,7 @@
 //= require_tree .
 //= require turbolinks
 
-// $( document ).ready(function(){
-
-// })
-
 $( document ).on('turbolinks:load', function() {
-
   $('select').material_select();
   $(".button-collapse").sideNav();
 })
