@@ -22,6 +22,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to "/events", notice: "Event was successfully updated." }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { redirect_to "/events/#{@event.id}/edit", alert: "Error creating event. Make sure all required fields are correctly completed and try again." }
+      end
+    end
+  end
+
   private
   def event_params
     params.require(:event)
