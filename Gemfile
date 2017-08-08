@@ -36,6 +36,7 @@ gem 'cancancan'
 
 #jquery install
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 #CSS framework
 gem 'materialize-sass'
 
