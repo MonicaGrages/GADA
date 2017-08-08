@@ -12,7 +12,14 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to "/events", notice: "Event was successfully created." }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new, alert: "Error creating event. Make sure all required fields are correctly completed and try again." }
+      end
+    end
   end
 
   private

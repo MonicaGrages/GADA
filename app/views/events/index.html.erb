@@ -4,8 +4,8 @@
   <% @upcoming_events.each do |event| %>
     <div class="form-container z-depth-3">
       <h4 class="header light"><%= event.title %></h4>
-      <h5><%= event.date.strftime("%D") %></h5>
-      <h5><%= event.time.strftime("%l:%M %P") %></h5>
+      <h5><%= event.date.strftime("%A %B %e, %Y") %></h5>
+      <h5><%= event.time %></h5>
       <h6><%= event.description %></h6>
       <% if event.link %>
         <h6><%= link_to event.link_text, event.link %></h6>

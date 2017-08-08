@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require pickadate/classic.time
  */
 
 #header-nav{

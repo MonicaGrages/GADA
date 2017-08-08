@@ -6,8 +6,12 @@
         <%= f.text_field :title %>
       </div>
       <div class='input-field'>
-        <%= f.label :date, "Date" %>
+        <%= f.label :date, "Date"%>
         <%= f.text_field :date, :class => "datepicker" %>
+      </div>
+      <div class='input-field'>
+        <%= f.label :time, "Time", :id => "timepicker-label"%>
+        <%= f.text_field :time, :class => "timepicker", :id => "timepicker" %>
       </div>
       <div class='input-field'>
         <%= f.label :description, "Description", :id => "event-description-form-text-area" %>
@@ -15,11 +19,11 @@
       </div>
       <div class='input-field'>
         <%= f.label :link, "Link", :class => "active" %>
-        <%= f.text_field :link, :placeholder => "Link to external site such as Evite page, if any" %>
+        <%= f.text_field :link, :placeholder => "Optional - Link to external site such as Evite page" %>
       </div>
       <div class='input-field'>
         <%= f.label :link_text, "Link Text", :class => "active"%>
-        <%= f.text_field :link_text, :placeholder => "What text should appear to lead to link above?" %>
+        <%= f.text_field :link_text, :placeholder => "What text should appear to lead to link above? Ex: 'RSVP on evite'" %>
       </div>
 
       <div class='form_button_container'>
@@ -28,3 +32,4 @@
     </div>
   <% end %>
 </div>
+
