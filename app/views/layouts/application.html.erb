@@ -17,13 +17,13 @@
       <%= link_to image_tag("/assets/gadaLogo6.png"), root_path, class: "logo-link brand-logo" %>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
-        <li><a class="nav-link-text" href="#">Events</a></li>
+        <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
         <li><a class="nav-link-text" href="#">Blog</a></li>
         <li><a class="nav-link-text" href="#">Membership</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Events</a></li>
+        <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Membership</a></li>
       </ul>
