@@ -6,4 +6,11 @@ class EventsController < ApplicationController
     @upcoming_events = Event.where('date >= ?', Date.today)
   end
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+  end
+
 end
