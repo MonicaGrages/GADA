@@ -23,7 +23,7 @@
         <h4 class="header light orange-text"><%= blog.title %></h4>
         <h5>Written by: <%= blog.author %></h5>
         <h5><%= blog.created_at.strftime("%A %B %e, %Y") %></h5>
-        <h6><%= truncate(blog.content, :length => 600) %></h6>
+        <h6><%= truncate(blog.content, :length => 400) %></h6>
         <%= link_to "MORE", blog_path(blog.id) %>
       </div>
     <% end %>
