@@ -8,11 +8,11 @@
 
   <div class="form-container z-depth-3">
     <%= form_for member_search_results_path, method: :get do |f|%>
-      <div class="input-field inline">
+      <div class="input-field">
         <%= f.label :email, "Email address" %>
         <%= f.text_field :email %>
       </div>
-      <%= f.submit "Submit", class: "btn waves-effect waves-light"%>
+      <%= f.submit "Find", class: "btn waves-effect waves-light"%>
     <% end %>
   </div>
 

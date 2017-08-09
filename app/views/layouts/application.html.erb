@@ -18,14 +18,14 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
         <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
-        <li><a class="nav-link-text" href="#">Blog</a></li>
-        <li><a class="nav-link-text" href="#">Membership</a></li>
+        <li><%= link_to "Blog", blogs_path, class: "nav-link-text"%></li>
+        <li><%= link_to "Membership", registration_path, class: "nav-link-text"%></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Membership</a></li>
+        <li><%= link_to "Blog", blogs_path, class: "nav-link-text"%></li>
+        <li><%= link_to "Membership", registration_path, class: "nav-link-text"%></li>
       </ul>
     </div>
 

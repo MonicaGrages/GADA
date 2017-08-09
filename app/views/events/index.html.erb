@@ -1,6 +1,11 @@
 <h2 class="header center orange-text">Upcoming GADA Events</h2>
 
 <div class="container">
+  <% if @events.length == 0 %>
+    <h4 class="header light">We have lots of upcoming events, but details are
+      not available yet. Come back soon to find out more!</h4>
+  <% end %>
+
   <% @upcoming_events.each do |event| %>
     <div class="form-container z-depth-3">
       <% if user_signed_in? %>
