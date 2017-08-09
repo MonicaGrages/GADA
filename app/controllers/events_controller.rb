@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @upcoming_events = Event.where('date >= ?', Date.today)
+    @events = Event.where('date >= ?', Date.today)
+    @upcoming_events = @events.order('date ASC')
   end
 
   def new

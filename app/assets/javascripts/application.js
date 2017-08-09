@@ -82,7 +82,7 @@ $( document ).on('turbolinks:load', function() {
     }
 
     function leadingZero(num) {
-      return (num < 10 ? '0' : '') + num;
+      return (num < 10 ? '' : '') + num;
     }
 
     // Get a unique id

@@ -56,6 +56,17 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+    if @member.delete
+       redirect_to members_path,
+                  notice: 'Member successfully deleted.'
+    else
+      redirect_to events_path,
+                  alert: 'Error deleting event.'
+    end
+  end
+
   private
   def member_params
     params.require(:member)
