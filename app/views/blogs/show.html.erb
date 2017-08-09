@@ -1,7 +1,12 @@
-<ul id="slide-out" class="side-nav fixed">
-  <li><a href="/blogs/1">First Sidebar Link</a></li>
-  <li><a href="/blogs/1">Second Sidebar Link</a></li>
-  <li><a class="waves-effect" href="/blogs/1">Third Link With Waves</a></li>
+<ul id="slide-out" class="side-nav fixed yellow darken-2">
+  <h4 class="header center teal-text light">Blog Archive</h4>
+  <% @blogs.each do |blog| %>
+    <li>
+      <%= link_to ("/blogs/#{blog.id}") do %>
+        <%= blog.title %> <span class="header light"> <%= blog.created_at.strftime("%b %Y") %></span>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
 <div class="container">
   <a href="#" data-activates="slide-out" class="button-collapse" id="blog-side-nav-expand-button">More Blog Posts</a>
@@ -35,5 +40,8 @@
 </div>
 
 <script>
+$(document).ready(function() {
   $('#header-nav').addClass('narrow-header-nav');
+  $('.page-footer').addClass('narrow-page-footer');
+});
 </script>

@@ -1582,6 +1582,8 @@ $( document ).on('turbolinks:load', function() {
     default: ''
   });
 
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({
+    menuWidth: 250
+  });
 
 })

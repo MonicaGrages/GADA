@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-    header, #blog-page-main, footer {
-      padding-left: 300px;
+    #blog-page-main {
+      padding-left: 250px;
     }
 
     #slide-out{
       z-index: 1;
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
 
     #blog-side-nav-expand-button{
@@ -19,14 +21,19 @@
     }
 
     .narrow-header-nav{
-      margin-left: 300px;
-      width: calc(100vw - 300px);
+      margin-left: 250px;
+      width: calc(100vw - 250px);
+      width: -webkit-calc(100vw - 250px);
+      width: -moz-calc(100vw - 250px);
+    }
+
+    .narrow-page-footer{
+      padding-left: 250px;
     }
 
     @media only screen and (max-width : 992px) {
-      header, #blog-page-main, footer {
+      #blog-page-main {
         padding-left: 0;
-        z-index: 1;
       }
       #blog-side-nav-expand-button{
         display: inline-block;
@@ -34,6 +41,9 @@
       .narrow-header-nav{
         margin-left: 0;
         width: 100%;
+      }
+      .narrow-page-footer{
+        padding-left: 0;
       }
     }
 
