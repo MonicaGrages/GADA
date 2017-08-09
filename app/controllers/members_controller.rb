@@ -62,8 +62,8 @@ class MembersController < ApplicationController
        redirect_to members_path,
                   notice: 'Member successfully deleted.'
     else
-      redirect_to events_path,
-                  alert: 'Error deleting event.'
+      redirect_to members_path,
+                  alert: 'Error deleting member.'
     end
   end
 

@@ -18,6 +18,10 @@
         <%= f.text_area :description, :class => "materialize-textarea" %>
       </div>
       <div class='input-field'>
+        <%= f.label :location, "Location", :id => "event-description-form-text-area" , :class => "form-label" %>
+        <%= f.text_area :location, :class => "materialize-textarea" %>
+      </div>
+      <div class='input-field'>
         <%= f.label :link, "Link", :class => "active" %>
         <%= f.text_field :link, :placeholder => "Optional - Link to external site such as Evite page" %>
       </div>

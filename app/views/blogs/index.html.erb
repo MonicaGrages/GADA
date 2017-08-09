@@ -1,0 +1,22 @@
+<h2 class="header center teal-text">Blog</h2>
+
+<div class="container">
+  <% @blogs.each do |blog| %>
+    <div class="form-container z-depth-3">
+      <% if user_signed_in? %>
+        <div class="right">
+          <%= link_to("/blogs/#{blog.id}/edit") do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          <%= link_to("/blogs/#{blog.id}", method: :delete, data: {confirm: "Are you sure you want to delete this blog post?"}) do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+          <h4 class="header light"><%= blog.title %></h4>
+          <h5><%= blog.author %></h5>
+          <h5><%= blog.created_at.strftime("%A %B %e, %Y") %></h5>
+          <h6><%= blog.content %></h6>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
