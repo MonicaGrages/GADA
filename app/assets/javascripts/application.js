@@ -1582,4 +1582,6 @@ $( document ).on('turbolinks:load', function() {
     default: ''
   });
 
+  $(".button-collapse").sideNav();
+
 })

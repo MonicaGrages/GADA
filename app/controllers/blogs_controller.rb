@@ -3,7 +3,11 @@ class BlogsController < ApplicationController
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order('created_at DESC')
+  end
+
+  def show
+    @blog = Blog.find(params[:id])
   end
 
   def new

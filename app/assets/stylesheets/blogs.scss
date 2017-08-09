@@ -1,3 +1,40 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+    header, #blog-page-main, footer {
+      padding-left: 300px;
+    }
+
+    #slide-out{
+      z-index: 1;
+    }
+
+    #blog-side-nav-expand-button{
+      display: none;
+    }
+
+    #blog-page-main{
+      z-index: -1;
+    }
+
+    .narrow-header-nav{
+      margin-left: 300px;
+      width: calc(100vw - 300px);
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, #blog-page-main, footer {
+        padding-left: 0;
+        z-index: 1;
+      }
+      #blog-side-nav-expand-button{
+        display: inline-block;
+      }
+      .narrow-header-nav{
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+
