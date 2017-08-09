@@ -27,6 +27,33 @@ class BlogsController < ApplicationController
     end
   end
 
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    respond_to do |format|
+      if @blog.update(blog_params)
+        format.html { redirect_to "/blogs", notice: "Blog was successfully updated." }
+        format.json { render :show, status: :created, location: @blog }
+      else
+        format.html { redirect_to "/blogs/#{@blog.id}/edit", alert: "Error updating blog. Make sure all required fields are correctly completed and try again." }
+      end
+    end
+  end
+
+  def destroy
+    @blog = Blog.find(params[:id])
+    if @blog.delete
+       redirect_to blogs_path,
+                  notice: 'Blog post successfully deleted.'
+    else
+      redirect_to blogs_path,
+                  alert: 'Error deleting blog post.'
+    end
+  end
+
 
   private
   def blog_params

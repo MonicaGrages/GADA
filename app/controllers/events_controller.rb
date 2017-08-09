@@ -34,7 +34,7 @@ class EventsController < ApplicationController
         format.html { redirect_to "/events", notice: "Event was successfully updated." }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { redirect_to "/events/#{@event.id}/edit", alert: "Error creating event. Make sure all required fields are correctly completed and try again." }
+        format.html { redirect_to "/events/#{@event.id}/edit", alert: "Error updating event. Make sure all required fields are correctly completed and try again." }
       end
     end
   end
