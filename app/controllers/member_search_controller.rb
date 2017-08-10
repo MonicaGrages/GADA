@@ -2,7 +2,7 @@ class MemberSearchController < ApplicationController
 
   def index
     if params["/member_search/results"]
-      email = member_params["email"]
+      email = member_params["email"].downcase
       @member = Member.find_by(email: email)
       now = Date.today
       if @member
