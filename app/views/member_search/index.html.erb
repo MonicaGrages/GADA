@@ -10,7 +10,7 @@
     <%= form_for member_search_results_path, method: :get do |f|%>
       <div class="input-field">
         <%= f.label :email, "Email address" %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, :class => "validate", required: true %>
       </div>
       <%= f.submit "Find", class: "btn waves-effect waves-light"%>
     <% end %>
