@@ -1565,7 +1565,6 @@ $( document ).on('turbolinks:load', function() {
 
   $('select').material_select();
 
-  $(".button-collapse").sideNav();
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
