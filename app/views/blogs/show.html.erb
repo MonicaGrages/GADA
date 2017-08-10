@@ -9,7 +9,7 @@
   <% end %>
 </ul>
 <div class="container">
-  <a href="/blogs" class="waves-effect waves-light btn red lighten-1" id="blog-side-nav-expand-button">Blog Archive</a>
+  <a href="/blogs" class="waves-effect waves-light btn red lighten-1 hoverable" id="blog-side-nav-expand-button">Blog Archive</a>
 </div>
 
 
@@ -33,7 +33,7 @@
       <h4 class="header light orange-text"><%= @blog.title %></h4>
       <h5>Written by: <%= @blog.author %></h5>
       <h5><%= @blog.created_at.strftime("%A %B %e, %Y") %></h5>
-      <h6><%= @blog.content %></h6>
+      <h6><%= simple_format(@blog.content) %></h6>
     </div>
 
   </div>
