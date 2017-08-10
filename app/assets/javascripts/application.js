@@ -1586,4 +1586,6 @@ $( document ).on('turbolinks:load', function() {
     menuWidth: 250
   });
 
+  $('.tooltipped').tooltip({delay: 50});
+
 })

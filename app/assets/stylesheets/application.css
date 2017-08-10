@@ -31,11 +31,14 @@
 
 .nav-link-text{
   font-size: 20px;
+  margin-right: 10px;
 }
 
-.logo-link{
-  display: flex;
-  align-items: center;
+#events-icon, #blog-icon, #members-icon{
+  display: inline;
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 30px;
 }
 
 .admin-message{

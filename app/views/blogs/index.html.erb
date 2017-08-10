@@ -5,7 +5,6 @@
     <h4 class="header light center">There are no posts yet. Come back soon!</h4>
   <% end %>
 
-  <div>
     <% @blogs.each do |blog| %>
       <div class="form-container z-depth-3">
         <% if user_signed_in? %>
@@ -24,10 +23,16 @@
         <h5>Written by: <%= blog.author %></h5>
         <h5><%= blog.created_at.strftime("%A %B %e, %Y") %></h5>
         <h6><%= truncate(blog.content, :length => 400) %></h6>
-        <%= link_to "MORE", blog_path(blog.id) %>
+        <div>
+          <a class="btn-floating btn-large waves-effect waves-light red
+            tooltipped" data-position="left" data-delay="50" data-tooltip="More" href=<%= "/blogs/#{blog.id}" %>>
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+        <br><br>
       </div>
     <% end %>
-  </div>
+
 
 </div>
 

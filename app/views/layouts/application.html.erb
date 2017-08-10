@@ -18,15 +18,51 @@
       <%= link_to image_tag("http://i.imgur.com/nLJvnz4.png"), root_path, class: "logo-link brand-logo" %>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
-        <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
-        <li><%= link_to "Blog", blogs_path, class: "nav-link-text"%></li>
-        <li><%= link_to "Membership", registration_path, class: "nav-link-text"%></li>
+        <li class="header-nav-li">
+          <%= link_to(events_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">event</i><span>Events</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
+          <%= link_to(blogs_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">rss_feed</i><span>Blog</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
+          <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">group</i><span>Membership</span>
+          <% end %>
+        </li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><%= link_to "Events", events_path, class: "nav-link-text"%></li>
-        <li><%= link_to "Blog", blogs_path, class: "nav-link-text"%></li>
-        <li><%= link_to "Membership", registration_path, class: "nav-link-text"%></li>
+        <li class="header-nav-li">
+          <%= link_to(events_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">event</i><span>Events</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
+          <%= link_to(blogs_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">rss_feed</i><span>Blog</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
+          <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">group</i><span>Membership</span>
+          <% end %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="header-nav-li">
+            <%= link_to(admin_path, class: "nav-link-text waves-effect waves-teal") do %>
+              <i class="material-icons" id="blog-icon">settings</i><span>Website Admin Menu</span>
+            <% end %>
+          </li>
+          <li class="header-nav-li">
+            <%= link_to(destroy_user_session_path, method: :delete, class: "nav-link-text waves-effect waves-teal") do %>
+              <i class="material-icons" id="blog-icon">close</i><span>Log Out</span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
