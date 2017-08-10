@@ -3,7 +3,7 @@
   <% @blogs.each do |blog| %>
     <li>
       <%= link_to ("/blogs/#{blog.id}") do %>
-        <%= blog.title %> <span class="header light"> <%= blog.created_at.strftime("%b %Y") %></span>
+        <%= truncate(blog.title, :length => 30) %> <span class="header light"> <%= blog.created_at.strftime("%b %Y") %></span>
       <% end %>
     </li>
   <% end %>
