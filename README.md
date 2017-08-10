@@ -4,7 +4,7 @@
 
 #### Technologies used in this project:
 - Ruby on Rails
-- Materialize CSS
+- Materialize
 - SASS
 - HTML
 - JQuery
