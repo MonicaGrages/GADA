@@ -7,15 +7,15 @@
       <div class='form'>
         <div class='input-field inline'>
           <%= f.label :first_name, "First Name", :class => "active" %>
-          <%= f.text_field :first_name %>
+          <%= f.text_field :first_name, class: 'validate', required: true %>
         </div>
         <div class='input-field inline'>
           <%= f.label :last_name, "Last Name", :class => "active" %>
-          <%= f.text_field :last_name %>
+          <%= f.text_field :last_name, class: 'validate', required: true %>
         </div>
         <div class='input-field inline'>
           <%= f.label :email, "Email", :class => "active" %>
-          <%= f.text_field :email %>
+          <%= f.email_field :email, class: 'validate', required: true %>
         </div>
         <div class='input-field inline'>
           <%= f.label :membership_type, "Membership Type", :class => "active" %>
