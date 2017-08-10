@@ -2,40 +2,37 @@
   <h3 class="header center light">Admin Menu</h3>
 </div>
 
-<!--
-<nav class="red lighten-2" role="navigation" id="admin-nav"> -->
-      <div class="section" id="admin-nav">
-      <div class="row">
-        <div class="col s12 m4 center">
-          <div class="icon-block">
-            <h2 class="center"><i class="material-icons">group</i></h2>
-            <h5 class="center">Members</h5>
-            <%= link_to "Add new member", new_member_path, class: "btn waves-effect waves-light" %>
-            <br><br>
-            <%= link_to "Current Members", members_path, class: "btn waves-effect waves-light" %>
-          </div>
-        </div>
-
-        <div class="col s12 m4 center">
-          <div class="icon-block">
-            <h2 class="center"><i class="material-icons">event</i></h2>
-            <h5 class="center">Events</h5>
-            <%= link_to "Add New Event", new_event_path, class: "btn waves-effect waves-light" %>
-            <br><br>
-            <%= link_to "Update Events", events_path, class: "btn waves-effect waves-light" %>
-          </div>
-        </div>
-
-        <div class="col s12 m4 center">
-          <div class="icon-block">
-            <h2 class="center"><i class="material-icons">rss_feed</i></h2>
-            <h5 class="center">Blog</h5>
-            <%= link_to "Add New Blog Post", new_blog_path, class: "btn waves-effect waves-light" %>
-            <br><br>
-            <%= link_to "Update Blog Posts", blogs_path, class: "btn waves-effect waves-light" %>
-          </div>
-        </div>
+<div class="section" id="admin-nav">
+  <div class="row">
+    <div class="col s12 m4 center">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">group</i></h2>
+        <h5 class="center">Members</h5>
+        <%= link_to "Add new member", new_member_path, class: "btn waves-effect waves-light" %>
+        <br><br>
+        <%= link_to "Current Members", members_path, class: "btn waves-effect waves-light" %>
       </div>
-
     </div>
-<!-- </nav> -->
+
+    <div class="col s12 m4 center">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">event</i></h2>
+        <h5 class="center">Events</h5>
+        <%= link_to "Add New Event", new_event_path, class: "btn waves-effect waves-light" %>
+        <br><br>
+        <%= link_to "Update Events", events_path, class: "btn waves-effect waves-light" %>
+      </div>
+    </div>
+
+    <div class="col s12 m4 center">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">rss_feed</i></h2>
+        <h5 class="center">Blog</h5>
+        <%= link_to "Add New Blog Post", new_blog_path, class: "btn waves-effect waves-light" %>
+        <br><br>
+        <%= link_to "Update Blog Posts", blogs_path, class: "btn waves-effect waves-light" %>
+      </div>
+    </div>
+  </div>
+</div>
+
