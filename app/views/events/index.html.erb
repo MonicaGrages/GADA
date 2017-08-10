@@ -18,11 +18,11 @@
           <% end %>
         </div>
       <% end %>
-      <h4 class="header light"><%= event.title %></h4>
-      <h5><%= event.date.strftime("%A %B %e, %Y") %></h5>
-      <h5 class="event-time"><%= event.time.strftime("%l:%M %p") %></h5>
-      <h5><%= event.location %></h5>
-      <h6><%= event.description %></h6>
+      <h4 class="header teal-text"><%= event.title %></h4>
+      <h5 class="header light"><%= event.date.strftime("%A %B %e, %Y") %></h5>
+      <h5 class="event-time header light"><%= event.time.strftime("%l:%M %p") %></h5>
+      <h5 class="header light"><%= simple_format(event.location) %></h5>
+      <h6><%= simple_format(event.description) %></h6>
       <% if event.link %>
         <h6><%= link_to event.link_text, event.link %></h6>
       <% end %>
