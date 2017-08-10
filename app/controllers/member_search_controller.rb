@@ -14,7 +14,7 @@ class MemberSearchController < ApplicationController
         end
       else
         puts "That email address is not associated with a current member"
-        @message = "That email address is not associated with a current member"
+        @message = "The email address #{email} is not associated with a current member"
       end
       puts @message
     end

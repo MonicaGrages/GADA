@@ -20,7 +20,7 @@
       <% end %>
       <h4 class="header light"><%= event.title %></h4>
       <h5><%= event.date.strftime("%A %B %e, %Y") %></h5>
-      <h5><%= event.time %></h5>
+      <h5 class="event-time"><%= event.time.strftime("%l:%M %p") %></h5>
       <h5><%= event.location %></h5>
       <h6><%= event.description %></h6>
       <% if event.link %>
