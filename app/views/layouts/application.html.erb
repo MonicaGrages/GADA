@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/9836f74c3b.js"></script>
   </head>
 
   <body>
@@ -45,20 +46,36 @@
 
     <footer class="page-footer orange">
       <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
+        <div class="row footer-main">
+          <div class="col l6 s12 footer-section">
             <h5 class="white-text">About GADA</h5>
             <p class="grey-text text-lighten-4">Greater Atlanta Dietetic Association (GADA) is the professional association for dietitians and nutrition professionals in the metropolitan Atlanta area. RDNs and students join GADA to network, participate in leadership and professional growth, and earn continuing education hours. GADA empowers its members to be the local food and nutrition experts by providing networking and professional development opportunities.</p>
 
 
           </div>
-          <div class="col l3 s12">
+          <div class="col l3 s12" id="connect-nav">
             <h5 class="white-text">Connect</h5>
             <ul>
-              <li><a class="white-text" href="#!">Facebook</a></li>
-              <li><a class="white-text" href="#!">Linked In</a></li>
-              <li><a class="white-text" href="#!">Twitter</a></li>
-              <li><a class="white-text" href="#!">Email</a></li>
+              <li>
+                <a class="white-text social-links" href="https://www.facebook.com/eatrightATL">
+                  <i class="fa fa-facebook-square fa-2x hoverable" aria-hidden="true"></i> Facebook
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="https://www.linkedin.com/groups/3785630">
+                  <i class="fa fa-linkedin-square fa-2x hoverable" aria-hidden="true"></i> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="https://twitter.com/EatRightATL">
+                  <i class="fa fa-twitter-square fa-2x hoverable" aria-hidden="true"></i> Twitter
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="mailto:gadainfo@eatrightatlanta.org">
+                  <i class="fa fa-envelope-square fa-2x hoverable" aria-hidden="true"></i> Email
+                </a>
+              </li>
             </ul>
           </div>
         </div>

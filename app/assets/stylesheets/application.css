@@ -57,3 +57,25 @@
 .page-footer{
   margin-top: 40px;
 }
+
+#connect-nav{
+  margin-left: 200px;
+}
+
+.social-links{
+  font-size: 18px;
+  font-weight: 300;
+  &:hover{
+    color: gray;
+  }
+}
+
+.fa{
+  vertical-align: middle;
+}
+
+@media only screen and (max-width : 992px) {
+  #connect-nav{
+  margin-left: 0px;
+}
+}
