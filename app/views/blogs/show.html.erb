@@ -1,9 +1,9 @@
 <ul id="slide-out" class="side-nav fixed yellow darken-2">
   <h4 class="header center teal-text light">Blog Archive</h4>
   <% @blogs.each do |blog| %>
-    <li>
-      <%= link_to ("/blogs/#{blog.id}") do %>
-        <%= truncate(blog.title, :length => 30) %> <span class="header light"> <%= blog.created_at.strftime("%b %Y") %></span>
+    <li class="side-nav-li">
+      <%= link_to ("/blogs/#{blog.id}"), class: 'blog-archive-nav-links' do %>
+        <span><%= truncate(blog.title, :length => 23) %></span> <span class="header light"> <%= blog.created_at.strftime("%b %Y") %></span>
       <% end %>
     </li>
   <% end %>

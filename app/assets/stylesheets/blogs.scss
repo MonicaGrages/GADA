@@ -16,6 +16,15 @@
       display: none;
     }
 
+    .side-nav-li{
+      .blog-archive-nav-links{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+
     #blog-page-main{
       z-index: -1;
     }
