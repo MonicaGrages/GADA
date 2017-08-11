@@ -118,7 +118,8 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        <p>Greater Atlanta Dietetic Association</p>
+        <p class="white-text">Greater Atlanta Dietetic Association</p>
+        <p><a class="white-text" href="mailto:gadainfo@eatrightatlanta.org">gadainfo@eatrightatlanta.org</a></p>
         <% if user_signed_in? %>
           Logged in to admin mode as <strong><%= current_user.email %></strong>.
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>

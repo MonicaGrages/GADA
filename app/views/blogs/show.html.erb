@@ -31,8 +31,8 @@
 
     <div>
       <h4 class="header light orange-text"><%= @blog.title %></h4>
-      <h5>Written by: <%= @blog.author %></h5>
-      <h5><%= @blog.created_at.strftime("%A %B %e, %Y") %></h5>
+      <h5 class="light ">Written by: <%= @blog.author %></h5>
+      <h5 class="light "><%= @blog.created_at.strftime("%A %B %e, %Y") %></h5>
       <h6><%= simple_format(@blog.content) %></h6>
     </div>
 
