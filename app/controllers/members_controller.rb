@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @active_members = Member.where('membership_expiration_date > ?', Date.today)
+    @active_members = Member.where('membership_expiration_date > ?', Date.today).order('last_name ASC')
     @active_member_count = @active_members.count
     @student_member_count = @active_members.where(membership_type: "Student").count
     @rd_member_count = @active_members.where(membership_type: "RD").count
