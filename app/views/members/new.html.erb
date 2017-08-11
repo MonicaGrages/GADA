@@ -20,7 +20,7 @@
         <div class='input-field'>
           <%= f.label :membership_type, "Membership Type", :class => "active" %>
           <%= f.select (:membership_type) do %>
-            <% [['RDN', 'RD'], ['Student', 'student']].each do |c| -%>
+            <% [['RDN', 'RD'], ['Student', 'Student']].each do |c| -%>
               <%= content_tag(:option, c.first, value: c.last) %>
             <% end %>
           <% end %>
