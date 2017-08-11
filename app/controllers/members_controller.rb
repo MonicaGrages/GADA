@@ -14,7 +14,7 @@ class MembersController < ApplicationController
 
   def create
     @new_member = Member.new(member_params)
-    if Member.exists?(email: @new_member.email)
+    if Member.exists?(email: @new_member.email.downcase!)
       @existing_member = Member.find_by(email: @new_member.email)
       # if admin user entered a new expiration date that is after the member's current expiration date
       if @existing_member.membership_expiration_date < @new_member.membership_expiration_date
@@ -26,8 +26,8 @@ class MembersController < ApplicationController
       # if trying to add a member that is already current
       elsif @existing_member.membership_expiration_date >= @new_member.membership_expiration_date
         respond_to do |format|
-          puts "There is already a current member with the email #{@existing_member.email}. If you want to update this member's information, go back to the Admin menu and click 'Update Current Member Info'."
-          format.html { redirect_to "/members/new", alert: "There is already a current member with the email #{@existing_member.email}. If you need to update this member's information, go back to the Admin Menu and click 'Update Existing Member'." }
+          puts "There is already a current member with the email #{@existing_member.email}. If you want to update this member's info, go to the Admin menu and click 'Current Members'."
+          format.html { redirect_to "/members/new", alert: "There is already a current member with the email #{@existing_member.email}. If you need to update this member's info, go to the Admin Menu and click 'Current Members'." }
         end
       end
     else
