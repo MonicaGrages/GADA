@@ -1,7 +1,7 @@
 
 <div class="container center">
   <h3 class="header center light">Active GADA Members</h3>
-  <%= link_to "Add new member", new_member_path, class: "btn-large waves-effect waves-light orange" %>
+  <%= link_to "Add new member", new_member_path, class: "btn-large waves-effect waves-light orange hoverable" %>
   <br><br>
   <h6 class="header center light">Current Member Count</h6>
   <ul class="center">
@@ -17,6 +17,7 @@
       <th class="members-index-th">Last Name</th>
       <th class="members-index-th">Email</th>
       <th class="members-index-th">Membership Type</th>
+      <th class="members-index-th">Membership Expires</th>
       <th class="table-icons-column">Edit</th>
     </tr>
 
@@ -26,6 +27,7 @@
         <td class="members-index-td"><%= member.last_name %></td>
         <td class="members-index-td"><%= member.email %></td>
         <td class="members-index-td"><%= member.membership_type %></td>
+        <td class="members-index-td"><%= member.membership_expiration_date.strftime("%B %e, %Y") %></td>
         <td class="edit-member-column">
           <%= link_to("/members/#{member.id}/edit") do %>
             <i class="material-icons">edit</i>
