@@ -40,6 +40,16 @@
       padding-left: 250px;
     }
 
+    #connect-nav-blog-page{
+      margin-left: 200px;
+    }
+
+    @media only screen and (max-width : 1360px) {
+      #connect-nav-blog-page{
+        margin-left: 130px;
+      }
+    }
+
     @media only screen and (max-width : 992px) {
       #blog-page-main {
         padding-left: 0;
@@ -53,6 +63,9 @@
       }
       .narrow-page-footer{
         padding-left: 0;
+      }
+      #connect-nav-blog-page{
+        margin-left: 0;
       }
     }
 

@@ -23,7 +23,7 @@
           <i class="material-icons">edit</i>
         <% end %>
         <%= link_to("/blogs/#{@blog.id}", method: :delete, data: {confirm: "Are you sure you want to delete this blog post?"}) do %>
-          <i class="material-icons">delete</i>
+          <i class="material-icons deep-orange-text">delete</i>
         <% end %>
       </div>
       <br>
@@ -43,5 +43,6 @@
 $(document).ready(function() {
   $('#header-nav').addClass('narrow-header-nav');
   $('.page-footer').addClass('narrow-page-footer');
+  $('#connect-nav').attr('id', 'connect-nav-blog-page')
 });
 </script>
