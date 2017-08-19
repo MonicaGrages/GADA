@@ -1,0 +1,27 @@
+<div class='form-container z-depth-3'>
+  <%= form_for @board_member, :url =>"/board_member/#{@board_member.id}" do |f| %>
+    <div class='form'>
+      <div class='input-field'>
+        <%= f.label :name, "Name", :class => "form-label" %>
+        <%= f.text_field :name, :class => "validate", required: true %>
+      </div>
+      <div class='input-field'>
+        <%= f.label :position, "Board Position", :class => "form-label" %>
+        <%= f.text_field :position, :class => "validate", required: true %>
+      </div>
+      <div class='input-field'>
+        <%= f.label :description, "Content", :class => "form-label" %>
+        <%= f.text_area :description, :class => "materialize-textarea validate", required: true %>
+      </div>
+      <div class='input-field'>
+        <%= f.label :photo, "Photo URL (a direct link to a hosted image. ex: http://i.imgur.com/nLJvnz4.png)", :class => "form-label" %>
+        <%= f.text_field :photo, :class => "validate", required: true %>
+      </div>
+
+      <div class='form_button_container'>
+        <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large hoverable' %>
+        <%= link_to "Nevermind", admin_path, :class => 'waves-effect waves-light btn-large deep-orange hoverable' %>
+      </div>
+    </div>
+  <% end %>
+</div>

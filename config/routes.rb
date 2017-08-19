@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :members
   resources :blogs
   resources :events
+  resources :board_members
 
   get 'registration', to: "registration#index", as: "registration"
   get 'member_search', to: "member_search#index", as: "member_search"
