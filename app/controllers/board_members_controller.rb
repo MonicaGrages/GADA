@@ -3,7 +3,7 @@ class BoardMembersController < ApplicationController
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @board_members = BoardMember.all
+    @board_members = BoardMember.all.order(:order)
   end
 
   def new
