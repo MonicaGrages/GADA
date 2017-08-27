@@ -1,10 +1,10 @@
-<h2 class="header center orange-text">Meet Your GADA Board</h2>
+<h2 class="header center orange-text">Meet Your GADA Board of Directors</h2>
 
-<div class="container">
-<div class="row">
 
+
+<div class="cards-container">
   <% @board_members.each do |board_member| %>
-    <div class="card col s12 m6 l4" id="board_member_card">
+    <div class="card hoverable" id="board_member_card">
       <div class="card-image">
         <%= image_tag("#{board_member.photo}", class: "board-member-photo activator") %>
       </div>
@@ -29,6 +29,4 @@
       <% end %>
     </div>
   <% end %>
-
-</div>
 </div>

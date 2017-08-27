@@ -3,7 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.cards-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 #board_member_card{
   padding: 0;
   margin: 20px;
+  width: 300px;
 }
