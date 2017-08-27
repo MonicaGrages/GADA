@@ -9,12 +9,12 @@
         <%= image_tag("#{board_member.photo}", class: "board-member-photo activator") %>
       </div>
       <div class="card-content">
-        <span class="card-title activator header teal-text"><%= board_member.name %><i class="material-icons right">more_vert</i></span>
-        <h5 class="header light"><%= board_member.position %></h5>
+        <span class="activator teal-text board-member-name"><%= board_member.name %><i class="material-icons right">more_vert</i></span>
+        <h6 class="header light"><%= board_member.position %></h6>
       </div>
       <div class="card-reveal">
-        <span class="card-title header teal-text"><%= board_member.name %><i class="material-icons right">close</i></span>
-        <h5 class="header light"><%= board_member.position %></h5>
+        <span class="board-member-name teal-text card-title"><%= board_member.name %><i class="material-icons right">close</i></span>
+        <h6 class="header light"><%= board_member.position %></h6>
         <h6><%= simple_format(board_member.description) %></h6>
       </div>
       <% if user_signed_in? %>
