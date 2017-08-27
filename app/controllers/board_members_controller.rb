@@ -21,6 +21,33 @@ class BoardMembersController < ApplicationController
     end
   end
 
+  def edit
+    @board_member = BoardMember.find(params[:id])
+  end
+
+  def update
+    @board_member = BoardMember.find(params[:id])
+    respond_to do |format|
+      if @board_member.update(board_member_params)
+        format.html { redirect_to "/board_members", notice: "Board member info was successfully updated." }
+        format.json { render :show, status: :created, location: @board_member }
+      else
+        format.html { redirect_to "/board_members/#{@board_member.id}/edit", alert: "Error updating board member. Make sure all required fields are correctly completed and try again." }
+      end
+    end
+  end
+
+  def destroy
+    @board_member = BoardMember.find(params[:id])
+    if @board_member.delete
+       redirect_to board_members_path,
+                  notice: 'Board member successfully deleted.'
+    else
+      redirect_to board_members_path,
+                  alert: 'Error deleting board member.'
+    end
+  end
+
   private
   def board_member_params
     params.require(:board_member)

@@ -19,6 +19,11 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
         <li class="header-nav-li">
+          <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">person_add</i><span>Membership</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
           <%= link_to(events_path, class: "nav-link-text waves-effect waves-teal") do %>
             <i class="material-icons" id="blog-icon">event</i><span>Events</span>
           <% end %>
@@ -29,8 +34,8 @@
           <% end %>
         </li>
         <li class="header-nav-li">
-          <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
-            <i class="material-icons" id="blog-icon">group</i><span>Membership</span>
+          <%= link_to(board_members_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
       </ul>
@@ -48,7 +53,12 @@
         </li>
         <li class="header-nav-li">
           <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
-            <i class="material-icons" id="blog-icon">group</i><span>Membership</span>
+            <i class="material-icons" id="blog-icon">person_add</i><span>Membership</span>
+          <% end %>
+        </li>
+        <li class="header-nav-li">
+          <%= link_to(board_members_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
         <% if user_signed_in? %>
