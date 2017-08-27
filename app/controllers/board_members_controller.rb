@@ -2,7 +2,6 @@ class BoardMembersController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
-
   def index
     @board_members = BoardMember.all
   end

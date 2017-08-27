@@ -1,0 +1,34 @@
+<h2 class="header center orange-text">Meet Your GADA Board</h2>
+
+<div class="container">
+<div class="row">
+
+  <% @board_members.each do |board_member| %>
+    <div class="card col s12 m6 l4" id="board_member_card">
+      <div class="card-image">
+        <%= image_tag("#{board_member.photo}", class: "board-member-photo activator") %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator header teal-text"><%= board_member.name %><i class="material-icons right">more_vert</i></span>
+        <h5 class="header light"><%= board_member.position %></h5>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title header teal-text"><%= board_member.name %><i class="material-icons right">close</i></span>
+        <h5 class="header light"><%= board_member.position %></h5>
+        <h6><%= simple_format(board_member.description) %></h6>
+      </div>
+      <% if user_signed_in? %>
+        <div class="right">
+          <%= link_to("/board_members/#{board_member.id}/edit") do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          <%= link_to("/board_members/#{board_member.id}", method: :delete, data: {confirm: "Are you sure you want to delete this board member?"}) do %>
+            <i class="material-icons deep-orange-text">delete</i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+</div>
