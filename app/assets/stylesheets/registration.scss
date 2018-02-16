@@ -2,5 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.table-container {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  table {
+    width: 700px;
+  }
+}
 
+.super-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
 
+.membership-form-container {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
