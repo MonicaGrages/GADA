@@ -1,5 +1,5 @@
 class RegistrationController < ApplicationController
-  before_action :authenticate_user!, :except => [:discounted_membership, :success]
+  before_action :authenticate_user!, :except => [:discounted_membership, :success, :index]
 
   def discounted_membership
     month = Time.now.month
