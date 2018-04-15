@@ -10,13 +10,16 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
+    month = Time.now.month
+    year = Time.now.year
+    @first_year = month <= 5 ? year : year + 1
+    @second_year = month <= 5 ? year + 1 : year + 2
   end
 
 
   def create
     @new_member = Member.new(member_params)
-    if Member.exists?(email: @new_member.email.downcase!)
-      @existing_member = Member.find_by(email: @new_member.email)
+    if @existing_member = Member.where(email: @new_member.email).first
       # if trying to renew existing or expired member
       if @existing_member.membership_expiration_date < @new_member.membership_expiration_date
         respond_to do |format|
