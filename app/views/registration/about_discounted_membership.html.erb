@@ -1,0 +1,19 @@
+<div class='container center'>
+
+
+<h4 class='header light blue-text'>Towards the end of the membership year, a link to purchase membership at a discount can be offered to new members.</h4>
+<h4 class='header light orange-text'>When the link is enabled, it can be seen by anyone with the url, but you can't get to it by clicking through the main website, so <strong>if you want people to use it, you should send them a link</strong>.</h4>
+<% if @offering_discounted_membership %>
+  <h4><%= link_to 'View the page here.', discounted_membership_path, class: 'header red-text', target: :blank %></h4>
+<% else %>
+  <h4 class='header light red-text'>You'll be able to see and test the sharable link here once it's enabled.</h4>
+  <% end %>
+
+
+<% if @offering_discounted_membership %>
+  <h5 class='header light'>Not what you wanted?   <%= link_to "Turn off discounted membership", update_settings_path, class: "btn waves-effect waves-light hoverable btn-large red", method: :put %></h5>
+<% else %>
+  <h5 class='header light teal-text'>Ready to start?   <%= link_to "Turn on discounted membership", update_settings_path, class: 'btn waves-effect waves-light hoverable btn-large green', method: :put %></h5>
+<% end %>
+
+</div>
