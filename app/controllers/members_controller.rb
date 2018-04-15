@@ -16,7 +16,6 @@ class MembersController < ApplicationController
     @second_year = month <= 5 ? year + 1 : year + 2
   end
 
-
   def create
     @new_member = Member.new(member_params)
     if @existing_member = Member.where(email: @new_member.email).first
@@ -48,14 +47,11 @@ class MembersController < ApplicationController
     end
   end
 
-
-
   def edit
     @member = Member.find(params[:id])
   end
 
   def update
-    puts "update method in controller"
     @member = Member.find(params[:id])
     respond_to do |format|
       if @member.update(member_params)
