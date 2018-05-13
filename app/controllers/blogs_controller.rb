@@ -3,7 +3,8 @@ class BlogsController < ApplicationController
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.all.order('created_at DESC')
+    last_blog = Blog.order('created_at').last
+    redirect_to blog_path(last_blog)
   end
 
   def show

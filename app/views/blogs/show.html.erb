@@ -12,7 +12,6 @@
   <a href="/blogs" class="waves-effect waves-light btn red lighten-1 hoverable" id="blog-side-nav-expand-button">Blog Archive</a>
 </div>
 
-
 <div class="container" id="blog-page-main">
   <h2 class="header center teal-text">Blog</h2>
 
@@ -33,7 +32,7 @@
       <h4 class="header light orange-text"><%= @blog.title %></h4>
       <h5 class="light ">Written by: <%= @blog.author %></h5>
       <h5 class="light "><%= @blog.created_at.strftime("%A %B %e, %Y") %></h5>
-      <h6><%= simple_format(@blog.content) %></h6>
+      <h6><%= sanitize simple_format(@blog.content), tags: %w(strong em a img li ul ol p span), attributes: %w(href src style) %></h6>
     </div>
 
   </div>
