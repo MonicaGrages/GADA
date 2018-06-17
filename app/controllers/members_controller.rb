@@ -39,7 +39,14 @@ class MembersController < ApplicationController
     else
       respond_to do |format|
         if @new_member.save
-          format.html { redirect_to "/members", notice: "New Member #{@new_member.first_name} #{@new_member.last_name} was successfully added" }
+          notice = "New Member #{@new_member.first_name} #{@new_member.last_name} was successfully added."
+          mailchimp_response = MailchimpSubscriber.new(@new_member).subscribe_member
+          if mailchimp_response.code == '200'
+            notice += '<br>Member successfully subscribed to MailChimp.'
+          else
+            alert = 'Unable to subscribe member to MailChimp. Please add manually.'
+          end
+          format.html { redirect_to "/members", notice: notice, alert: alert }
         else
           format.html { redirect_to "/members/new", alert: "Error adding member. Please make sure all information was filled in correctly and try again." }
         end
