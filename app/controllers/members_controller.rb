@@ -18,7 +18,7 @@ class MembersController < ApplicationController
 
   def create
     @new_member = Member.new(member_params)
-    if @existing_member = Member.where(email: @new_member.email).first
+    if @existing_member = Member.where(email: @new_member.email.downcase).first
       # if trying to renew existing or expired member
       if @existing_member.membership_expiration_date < @new_member.membership_expiration_date
         respond_to do |format|
