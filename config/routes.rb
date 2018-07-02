@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get "member_search/results", to: "member_search#show", as: "member_search_results"
   get "/admin/menu", to: "admin#index", as: "admin"
   put "admin/update_settings", to: "admin#update_settings", as: 'update_settings'
+  post '/payment_webhook', to: 'webhooks#payment_handler', as: 'payment_webhook'
 
 end
