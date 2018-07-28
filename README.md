@@ -4,6 +4,7 @@
 
 #### Technologies used in this project:
 - Ruby on Rails
+- PostgreSQL
 - Materialize
 - SASS
 - HTML
