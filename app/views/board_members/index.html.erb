@@ -11,7 +11,9 @@
       <div class="card-content">
         <span class="activator teal-text board-member-name"><%= board_member.name %><i class="material-icons right">more_vert</i></span>
         <h6 class="header light"><%= board_member.position %></h6>
-        <h6 class="header light"><%= link_to board_member.email, "mailto:#{board_member.email}", :class => 'deep-orange-text' %></h6>
+        <% if board_member.email %>
+          <h6 class="header light"><%= link_to board_member.email, "mailto:#{board_member.email}", :class => 'deep-orange-text' %></h6>
+        <% end %>
       </div>
       <div class="card-reveal">
         <span class="board-member-name teal-text card-title"><%= board_member.name %><i class="material-icons right">close</i></span>
