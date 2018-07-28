@@ -11,3 +11,4 @@
 - Devise for Authentication
 - Cancancan for Authorization
 - PayPal buttons
+- [Mailchimp's API](https://developer.mailchimp.com/)
