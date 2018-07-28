@@ -51,7 +51,7 @@ class BoardMembersController < ApplicationController
   private
   def board_member_params
     params.require(:board_member)
-      .permit(:name, :position, :description, :photo)
+      .permit(:name, :position, :email, :description, :photo)
   end
 
 end
