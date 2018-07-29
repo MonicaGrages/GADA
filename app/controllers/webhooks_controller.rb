@@ -44,10 +44,11 @@ class WebhooksController < ApplicationController
   def create_membership
     current_year = Time.now.year
     exp_year = Time.now.month <= 5 ? current_year : current_year + 1
+    membership_type = params['item_name']&.downcase&.includes?('student') ? 'Student' : 'RD'
     Member.create(first_name: params['first_name'],
                   last_name: params['last_name'],
                   email: params['payer_email'],
                   membership_expiration_date: "#{exp_year}-05-31",
-                  membership_type: params['item_name'].downcase.includes?('student') ? 'Student' : 'RD')
+                  membership_type: membership_type)
   end
 end
