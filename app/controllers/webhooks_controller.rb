@@ -33,7 +33,7 @@ class WebhooksController < ApplicationController
 
   def verify_payment_details
     puts "verifying params: "
-    puts params
+    puts params.to_unsafe_h
     payment_completed = params['payment_status'] == 'Completed'
     new_transaction = PaymentTransaction.where("payload ->> 'txn_id' = ?", params['txn_id']).blank?
     receiver_matches = params['receiver_email'].downcase == 'treasurer@eatrightatlanta.org'
