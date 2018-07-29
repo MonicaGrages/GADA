@@ -18,9 +18,6 @@ class WebhooksController < ApplicationController
       puts "request.to_s is: "
       puts request.to_s
       puts "-------------------------------------------------"
-      puts "request.to_json is: "
-      puts request.to_json
-      puts "-------------------------------------------------"
       puts "params is: "
       puts params
       PaymentTransaction.create(payload: request)
