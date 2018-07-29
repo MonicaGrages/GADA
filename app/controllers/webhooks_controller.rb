@@ -12,6 +12,7 @@ class WebhooksController < ApplicationController
       # check that paymentAmount/paymentCurrency are correct
       # process payment
     when "INVALID"
+      puts request
       PaymentTransaction.create(payload: request)
       # log for investigation
     else
