@@ -6,10 +6,10 @@ class WebhooksController < ApplicationController
     case response
     when "VERIFIED"
       PaymentTransaction.create(payload: params)
-      create_membership(params) if verify_payment_details(params)
+      create_membership if verify_payment_details
     when "INVALID"
       PaymentTransaction.create(payload: params)
-      create_membership(params) if verify_payment_details(params)
+      create_membership if verify_payment_details
     else
       PaymentTransaction.create(payload: params)
     end
@@ -31,14 +31,16 @@ class WebhooksController < ApplicationController
                        ).body
   end
 
-  def verify_payment_details(params)
+  def verify_payment_details
+    puts "verifying params: "
+    puts params
     payment_completed = params['payment_status'] == 'Completed'
     new_transaction = PaymentTransaction.where("payload ->> 'txn_id' = ?", params['txn_id']).blank?
     receiver_matches = params['receiver_email'].downcase == 'treasurer@eatrightatlanta.org'
     payment_completed && new_transaction && receiver_matches
   end
 
-  def create_membership(params)
+  def create_membership
     current_year = Time.now.year
     exp_year = Time.now.month <= 5 ? current_year : current_year + 1
     Member.create(first_name: params['first_name'],
