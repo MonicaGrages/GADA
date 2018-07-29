@@ -5,13 +5,13 @@ class WebhooksController < ApplicationController
     response = validate_IPN_notification(request.raw_post)
     case response
     when "VERIFIED"
-      PaymentTransaction.create(payload: params, transaction_status: 'verified')
+      PaymentTransaction.create(payload: params)
       create_membership(params) if verify_payment_details(params)
     when "INVALID"
-      PaymentTransaction.create(payload: params, transaction_status: 'invalid')
+      PaymentTransaction.create(payload: params)
       create_membership(params) if verify_payment_details(params)
     else
-      PaymentTransaction.create(payload: params, transaction_status: 'error')
+      PaymentTransaction.create(payload: params)
     end
     head :ok
   end
@@ -45,6 +45,6 @@ class WebhooksController < ApplicationController
                   last_name: params['last_name'],
                   email: params['payer_email'],
                   membership_expiration_date: "#{exp_year}-05-31",
-                  membership_type: params['item_name1'].downcase.includes?('student') ? 'Student' : 'RD')
+                  membership_type: params['item_name'].downcase.includes?('student') ? 'Student' : 'RD')
   end
 end
