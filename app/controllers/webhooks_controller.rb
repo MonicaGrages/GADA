@@ -5,11 +5,11 @@ class WebhooksController < ApplicationController
     response = validate_IPN_notification(request.raw_post)
     case response
     when "VERIFIED"
-      PaymentTransaction.create(payload: params)
       create_membership if verify_payment_details
+      PaymentTransaction.create(payload: params)
     when "INVALID"
-      PaymentTransaction.create(payload: params)
       create_membership if verify_payment_details
+      PaymentTransaction.create(payload: params)
     else
       PaymentTransaction.create(payload: params)
     end
@@ -32,8 +32,6 @@ class WebhooksController < ApplicationController
   end
 
   def verify_payment_details
-    puts "verifying params: "
-    puts params.to_unsafe_h
     payment_completed = params['payment_status'] == 'Completed'
     puts "payment completed is #{payment_completed}"
     new_transaction = PaymentTransaction.where("payload ->> 'txn_id' = ?", params['txn_id']).blank?
