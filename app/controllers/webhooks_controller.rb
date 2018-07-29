@@ -5,12 +5,13 @@ class WebhooksController < ApplicationController
     response = validate_IPN_notification(request.raw_post)
     case response
     when "VERIFIED"
-      PaymentTransaction.create(payload: params, status: 'verified')
+      PaymentTransaction.create(payload: params, transaction_status: 'verified')
       create_membership(params) if verify_payment_details(params)
     when "INVALID"
-      PaymentTransaction.create(payload: params, status: 'invalid')
+      PaymentTransaction.create(payload: params, transaction_status: 'invalid')
+      create_membership(params) if verify_payment_details(params)
     else
-      PaymentTransaction.create(payload: params, status: 'error')
+      PaymentTransaction.create(payload: params, transaction_status: 'error')
     end
     head :ok
   end
