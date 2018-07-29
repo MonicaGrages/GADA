@@ -11,7 +11,11 @@
       </div>
       <div class='input-field'>
         <%= f.label :time, "Time", :id => "timepicker-label", :class => "form-label" %>
-        <%= f.text_field :time, :class => "timepicker", :id => "timepicker", required: true %>
+        <%= f.text_field :time, :class => "timepicker", :id => "timepicker", required: false %>
+      </div>
+      <div class='input-field'>
+        <%= f.label :image_url, "Link to hosted image", :class => "form-label" %>
+        <%= f.text_field :image_url, :class => "validate", :placeholder => "a direct https link to a hosted image. ex: https://i.imgur.com/nLJvnz4.png" %>
       </div>
       <div class='input-field'>
         <%= f.label :description, "Description", :id => "event-description-form-text-area" , :class => "form-label" %>

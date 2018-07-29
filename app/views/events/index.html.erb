@@ -19,8 +19,13 @@
         </div>
       <% end %>
       <h4 class="header teal-text"><%= event.title %></h4>
+      <% if event.image_url %>
+        <%= image_tag("#{event.image_url}", class: "event-image") %>>
+      <% end %>
       <h5 class="header light"><%= event.date.strftime("%A %B %e, %Y") %></h5>
-      <h5 class="event-time header light"><%= event.time.strftime("%l:%M %p") %></h5>
+      <% if event.time %>
+        <h5 class="event-time header light"><%= event.time.strftime("%l:%M %p") %></h5>
+      <% end %>
       <h5 class="header light"><%= simple_format(event.location) %></h5>
       <h6><%= simple_format(event.description) %></h6>
       <% if event.link %>
