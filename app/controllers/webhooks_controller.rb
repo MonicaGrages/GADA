@@ -2,6 +2,7 @@ class WebhooksController < ApplicationController
   protect_from_forgery :except => [:create]
   def create
     response = validate_IPN_notification(request.raw_post)
+    puts "The response was #{response}."
     case response
     when "VERIFIED"
       PaymentTransaction.create(payload: request)
