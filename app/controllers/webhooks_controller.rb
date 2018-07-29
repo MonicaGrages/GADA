@@ -12,11 +12,8 @@ class WebhooksController < ApplicationController
       # check that paymentAmount/paymentCurrency are correct
       # process payment
     when "INVALID"
-      puts "-------------------------------------------------"
-      puts "request.raw_post is: "
-      puts request.raw_post
-      puts "-------------------------------------------------"
-      PaymentTransaction.create(payload: request)
+      PaymentTransaction.create(payload: request.raw_post)
+      PaymentTransaction.create(payload: params)
       # log for investigation
     else
       # error
