@@ -93,38 +93,31 @@
     <footer class="page-footer orange">
       <div class="container">
         <div class="row footer-main">
-          <div class="col l6 s12 footer-section">
-            <h5 class="white-text">About GADA</h5>
-            <p class="grey-text text-lighten-4">Greater Atlanta Dietetic Association (GADA) is the professional association for dietitians and nutrition professionals in the metropolitan Atlanta area. RDNs and students join GADA to network, participate in leadership and professional growth, and earn continuing education hours. GADA empowers its members to be the local food and nutrition experts by providing networking and professional development opportunities.</p>
-
-
-          </div>
-          <div class="col l3 s12" id="connect-nav">
-            <h5 class="white-text">Connect</h5>
-            <ul>
+          <div>
+            <ul class='social-links-list'>
               <li>
                 <a class="white-text social-links" href="https://www.instagram.com/eatrightatl/">
-                  <i class="fa fa-instagram fa-2x hoverable" aria-hidden="true"></i> Instagram
+                  <i class="fa fa-instagram fa-2x hoverable" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
                 <a class="white-text social-links" href="https://www.facebook.com/eatrightATL">
-                  <i class="fa fa-facebook-square fa-2x hoverable" aria-hidden="true"></i> Facebook
+                  <i class="fa fa-facebook-square fa-2x hoverable" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
                 <a class="white-text social-links" href="https://www.linkedin.com/groups/3785630">
-                  <i class="fa fa-linkedin-square fa-2x hoverable" aria-hidden="true"></i> LinkedIn
+                  <i class="fa fa-linkedin-square fa-2x hoverable" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
                 <a class="white-text social-links" href="https://twitter.com/EatRightATL">
-                  <i class="fa fa-twitter-square fa-2x hoverable" aria-hidden="true"></i> Twitter
+                  <i class="fa fa-twitter-square fa-2x hoverable" aria-hidden="true"></i>
                 </a>
               </li>
               <li>
                 <a class="white-text social-links" href="mailto:gadainfo@eatrightatlanta.org">
-                  <i class="fa fa-envelope-square fa-2x hoverable" aria-hidden="true"></i> Email
+                  <i class="fa fa-envelope-square fa-2x hoverable" aria-hidden="true"></i>
                 </a>
               </li>
             </ul>
@@ -133,13 +126,11 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        <p class="white-text">Greater Atlanta Dietetic Association</p>
-        <p><a class="white-text" href="mailto:gadainfo@eatrightatlanta.org">gadainfo@eatrightatlanta.org</a></p>
+        <h6 class="white-text header light">&copy; Greater Atlanta Dietetic Association</h6>
+        <h6><a class="white-text header light" href="mailto:gadainfo@eatrightatlanta.org">gadainfo@eatrightatlanta.org</a></h6>
         <% if user_signed_in? %>
           Logged in to admin mode as <strong><%= current_user.email %></strong>.
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Website Admin", new_user_session_path  %>
         <% end %>
         </div>
       </div>

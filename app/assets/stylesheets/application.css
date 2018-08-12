@@ -41,14 +41,6 @@
   font-size: 30px;
 }
 
-.admin-message{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-left: 25px;
-  margin-right: 25px;
-}
-
 .form-container{
   border: 1px solid gray;
   border-radius: 8px;
@@ -61,24 +53,14 @@
   margin-top: 40px;
 }
 
-#connect-nav{
-  margin-left: 200px;
-}
-
-.social-links{
-  font-size: 18px;
-  font-weight: 300;
-  &:hover{
-    color: gray;
-  }
-}
-
-.fa{
-  vertical-align: middle;
-}
-
-@media only screen and (max-width : 1115px) {
-  #connect-nav{
-    margin-left: 0px;
+.social-links-list {
+  display: flex;
+  justify-content: space-around;
+  .social-links{
+    font-size: 18px;
+    font-weight: 300;
+    &:hover{
+      color: gray;
+    }
   }
 }

@@ -9,7 +9,7 @@
   <% end %>
 </ul>
 <div class="container">
-  <a href="/blogs" class="waves-effect waves-light btn red lighten-1 hoverable" id="blog-side-nav-expand-button">Blog Archive</a>
+  <a class="waves-effect waves-light btn red lighten-1 hoverable" data-activates="slide-out" id="blog-side-nav-expand-button">Blog Archive</a>
 </div>
 
 <div class="container" id="blog-page-main">
@@ -42,6 +42,5 @@
 $(document).ready(function() {
   $('#header-nav').addClass('narrow-header-nav');
   $('.page-footer').addClass('narrow-page-footer');
-  $('#connect-nav').attr('id', 'connect-nav-blog-page')
 });
 </script>
