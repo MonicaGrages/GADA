@@ -12,8 +12,6 @@ class WebhooksController < ApplicationController
     when "INVALID"
       if verify_payment_details
         PaymentTransaction.create(payload: params)
-        # remove next line when IPN is on in prod
-        create_membership
       end
     else
       puts "response is: "
@@ -39,13 +37,9 @@ class WebhooksController < ApplicationController
   end
 
   def verify_payment_details
-    # remove puts statements when IPN is on in prod
     payment_completed = params['payment_status'] == 'Completed'
-    puts "payment completed is #{payment_completed}"
     new_transaction = PaymentTransaction.where("payload ->> 'txn_id' = ?", params['txn_id']).blank?
-    puts "new_transaction is #{new_transaction}"
     receiver_matches = params['receiver_email'].downcase == 'treasurer@eatrightatlanta.org'
-    puts "receiver_matches is #{receiver_matches}"
     payment_completed && new_transaction && receiver_matches
   end
 
