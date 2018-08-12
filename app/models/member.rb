@@ -6,7 +6,55 @@ class Member < ApplicationRecord
   validates :last_name, presence: true
   validates :membership_type, presence: true
 
+  attr_accessor :notices
+
+  RECORD_SPECIFIC_FIELDS = %w(id created_at updated_at)
+
   def downcase_email
-    email.downcase!
+    email&.downcase!
   end
+
+  def create_membership
+    if @existing_member = Member.where(email: email&.downcase).first
+      if @existing_member.membership_expiration_date < membership_expiration_date
+        renew_member
+      elsif @existing_member.membership_expiration_date >= membership_expiration_date
+        errors[:base] << "There is already a current member with the email #{@existing_member.email}. If you need to update this member's info, go to the Admin Menu and click 'Current Members'."
+      end
+    else
+      save_new_member
+    end
+    self
+  end
+
+  private
+
+  def save_new_member
+    return unless errors.empty?
+    if save
+      self.notices = ["New member #{first_name} #{last_name} was successfully saved."]
+      subscribe_to_mailchimp
+    else
+      errors[:base] << "There was an error adding member #{first_name} #{last_name}. Please make sure fields are correctly filled out and try again."
+    end
+  end
+
+  def renew_member
+    if @existing_member.update(self.serializable_hash.except(*RECORD_SPECIFIC_FIELDS))
+      self.notices = ["Membership for #{first_name} #{last_name} was successfully renewed."]
+      subscribe_to_mailchimp
+    else
+      errors[:base] << "Error renewing membership for #{first_name} #{last_name}. Please make sure fields are correctly filled out and try again. Or go to update members page from admin menu."
+    end
+  end
+
+  def subscribe_to_mailchimp
+    mailchimp_response = MailchimpSubscriber.new(self).subscribe_member
+    if mailchimp_response.code != '200'
+      puts mailchimp_response
+      return errors[:base] << 'Unable to subscribe member to MailChimp. Please add manually.'
+    end
+    self.notices << 'Member successfully subscribed to Mailchimp.'
+  end
+
 end

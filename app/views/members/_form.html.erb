@@ -1,7 +1,7 @@
 <div class='form-container z-depth-3'>
-  <%= form_for @member, :url =>"/members/#{@member.id}" do |f| %>
+  <%= form_for @member do |f| %>
     <div class='form'>
-      <div class='input-fielde'>
+      <div class='input-field'>
         <%= f.label :first_name, "First Name", :class => "active" %>
         <%= f.text_field :first_name, class: 'validate', required: true %>
       </div>
@@ -15,23 +15,15 @@
       </div>
       <div class='input-field'>
         <%= f.label :membership_type, "Membership Type", :class => "active" %>
-        <%= f.select (:membership_type) do %>
-          <% [['RDN', 'RD'], ['Student', 'Student']].each do |c| -%>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
+        <%= f.select :membership_type, [['RDN', 'RD'], ['Student', 'Student']] %>
       </div>
       <div class='input-field'>
         <%= f.label :membership_expiration_date, "Member Expiration", :class => "active" %>
-        <%= f.select (:membership_expiration_date) do %>
-          <% [['May 31, 2018', '2018-05-31'], ['May 31, 2019', '2019-05-31']].each do |c| -%>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
+        <%= f.select :membership_expiration_date, [["May 31, #{@first_year}", "#{@first_year}-05-31"], ["May 31, #{@second_year}", "#{@second_year}-05-31"]] %>
       </div>
       <div class='form_button_container center'>
         <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large' %>
-        <%= link_to "Nevermind", admin_path, :class => 'waves-effect waves-light btn-large deep-orange hoverable' %>
+        <%= link_to "Nevermind", members_path, :class => 'waves-effect waves-light btn-large deep-orange hoverable' %>
       </div>
     </div>
   <% end %>

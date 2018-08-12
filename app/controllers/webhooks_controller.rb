@@ -5,12 +5,19 @@ class WebhooksController < ApplicationController
     response = validate_IPN_notification(request.raw_post)
     case response
     when "VERIFIED"
-      create_membership if verify_payment_details
-      PaymentTransaction.create(payload: params)
+      if verify_payment_details
+        PaymentTransaction.create(payload: params)
+        create_membership
+      end
     when "INVALID"
-      create_membership if verify_payment_details
-      PaymentTransaction.create(payload: params)
+      if verify_payment_details
+        PaymentTransaction.create(payload: params)
+        # remove next line when IPN is on in prod
+        create_membership
+      end
     else
+      puts "response is: "
+      puts response
       PaymentTransaction.create(payload: params)
     end
     head :ok
@@ -32,6 +39,7 @@ class WebhooksController < ApplicationController
   end
 
   def verify_payment_details
+    # remove puts statements when IPN is on in prod
     payment_completed = params['payment_status'] == 'Completed'
     puts "payment completed is #{payment_completed}"
     new_transaction = PaymentTransaction.where("payload ->> 'txn_id' = ?", params['txn_id']).blank?
@@ -44,11 +52,13 @@ class WebhooksController < ApplicationController
   def create_membership
     current_year = Time.now.year
     exp_year = Time.now.month <= 5 ? current_year : current_year + 1
-    membership_type = params['item_name']&.downcase&.includes?('student') ? 'Student' : 'RD'
-    Member.create(first_name: params['first_name'],
-                  last_name: params['last_name'],
-                  email: params['payer_email'],
-                  membership_expiration_date: "#{exp_year}-05-31",
-                  membership_type: membership_type)
+    item_name = params['item_name'] || params['item_name1']
+    membership_type = item_name&.downcase&.includes?('student') ? 'Student' : 'RD'
+    new_member = Member.new(first_name: params['first_name'],
+                            last_name: params['last_name'],
+                            email: params['payer_email'],
+                            membership_expiration_date: "#{exp_year}-05-31",
+                            membership_type: membership_type)
+    new_member.create_membership
   end
 end
