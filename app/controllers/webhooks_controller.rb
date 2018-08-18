@@ -11,7 +11,7 @@ class WebhooksController < ApplicationController
       end
     when "INVALID"
       if verify_payment_details
-        PaymentTransaction.create(payload: params, transaction_status: 'unverified')
+        PaymentTransaction.create(payload: params, transaction_status: 'invalid')
         create_membership
       end
     else
