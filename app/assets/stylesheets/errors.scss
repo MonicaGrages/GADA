@@ -1,0 +1,15 @@
+// Place all the styles related to the Errors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.box {
+  height: calc(100vh - 300px);
+}
+
+
+@media only screen and (max-width : 451px) {
+  .box {
+    height: 100%;
+  }
+}
