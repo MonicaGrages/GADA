@@ -6,17 +6,21 @@ class WebhooksController < ApplicationController
     case response
     when "VERIFIED"
       if verify_payment_details
-        PaymentTransaction.create(payload: params)
+        PaymentTransaction.create(payload: params, transaction_status: 'verified')
         create_membership
       end
     when "INVALID"
       if verify_payment_details
-        PaymentTransaction.create(payload: params)
+        PaymentTransaction.create(payload: params, transaction_status: 'unverified')
+        create_membership
       end
     else
       puts "response is: "
       puts response
-      PaymentTransaction.create(payload: params)
+      if verify_payment_details
+        PaymentTransaction.create(payload: params, transaction_status: 'other')
+        create_membership
+      end
     end
     head :ok
   end
