@@ -131,6 +131,8 @@
         <% if user_signed_in? %>
           Logged in to admin mode as <strong><%= current_user.email %></strong>.
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Website Admin", new_user_session_path, class: 'white-text header light' %>
         <% end %>
         </div>
       </div>
