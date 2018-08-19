@@ -28,7 +28,7 @@ class WebhooksController < ApplicationController
   protected
 
   def validate_IPN_notification(raw)
-    uri = URI.parse('https://ipnpb.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate')
+    uri = URI.parse('https://ipnpb.paypal.com/cgi-bin/webscr?cmd=_notify-validate')
     http = Net::HTTP.new(uri.host, uri.port)
     http.open_timeout = 60
     http.read_timeout = 60
