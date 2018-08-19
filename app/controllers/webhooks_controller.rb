@@ -12,14 +12,12 @@ class WebhooksController < ApplicationController
     when "INVALID"
       if verify_payment_details
         PaymentTransaction.create(payload: params, transaction_status: 'invalid')
-        create_membership
       end
     else
       puts "response is: "
       puts response
       if verify_payment_details
         PaymentTransaction.create(payload: params, transaction_status: 'other')
-        create_membership
       end
     end
     head :ok
