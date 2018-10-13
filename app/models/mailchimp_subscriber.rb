@@ -8,7 +8,17 @@ class MailchimpSubscriber
   end
 
   def subscribe_member
-    uri = URI.parse('https://us6.api.mailchimp.com/3.0/lists/76da82af3c/members')
+    member_list_id = '76da82af3c'
+    potential_and_member_list_id = '009c563368'
+    member_list_response = post_to_mailchimp(member_list_id)
+    potential_member_list_reponse = post_to_mailchimp(potential_and_member_list_id)
+    [member_list_response, potential_member_list_reponse]
+  end
+
+  private
+
+  def post_to_mailchimp(list_id)
+    uri = URI.parse("https://us6.api.mailchimp.com/3.0/lists/#{list_id}/members")
     header = {'content-type': 'application/json'}
     member = member_params
     http = Net::HTTP.new(uri.host, uri.port)
@@ -18,8 +28,6 @@ class MailchimpSubscriber
     request.body = member.to_json
     response = http.request(request)
   end
-
-  private
 
   def member_params
     { email_address: @member.email,

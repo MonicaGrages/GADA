@@ -50,11 +50,16 @@ class Member < ApplicationRecord
 
   def subscribe_to_mailchimp
     mailchimp_response = MailchimpSubscriber.new(self).subscribe_member
-    if mailchimp_response.code != '200'
-      puts mailchimp_response
-      return errors[:base] << 'Unable to subscribe member to MailChimp. Please add manually.'
+    list_subscription_successful?(mailchimp_response[0], '2018-2019 Members')
+    list_subscription_successful?(mailchimp_response[1], 'Current and Potential Members')
+  end
+
+  def list_subscription_successful?(response, list_type)
+    if response.code != '200'
+      puts response
+      return errors[:base] << "Unable to subscribe member to MailChimp #{list_type} List. Please add manually."
     end
-    self.notices << 'Member successfully subscribed to Mailchimp.'
+    self.notices << "Member successfully subscribed to Mailchimp #{list_type} List."
   end
 
 end
