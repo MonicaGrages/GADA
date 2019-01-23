@@ -1,10 +1,10 @@
 <div class="container center">
 
-  <h4 class="red-text header col s12">We're offering GADA membership for the remainder of the <%= @first_year %> - <%= @second_year %> year at a big discount!</h4>
+  <h4 class="red-text header col s12">We're offering GADA membership for the remainder of the <%= @first_year - 1 %> - <%= @first_year %> year at a big discount!</h4>
 
   <h5 class="header col s12 light">The GADA membership year runs from June 1 to May 31 annually, and we still have some <%= link_to "can't-miss events", events_path%> to come before year-end! Some that aren't even listed yet.</h5>
 
-  <h5 class="header col s12 light">Join us for the rest of the year, and get a head start by renewing for the next membership year too, all at a reduced price.</h5>
+  <h5 class="header col s12 light">Join us for the rest of the year.</h5>
   <br>
   <%= link_to "Check Current Membership Status", member_search_path, class: "btn-large waves-effect waves-light" %>
 
@@ -15,41 +15,35 @@
         <thead>
           <tr>
             <th>Membership Period</th>
-            <th>Now through May <%= @second_year %></th>
             <th>Now through May <%= @first_year %></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>RDN Membership</td>
-            <td>$50</td>
-            <td>$18</td>
+            <td>$20</td>
           </tr>
           <tr>
             <td>Student Membership</td>
-            <td>$30</td>
             <td>$10</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="membership-form-container z-depth-3">
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <form class='membership-form' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_s-xclick">
       <input type="hidden" name="hosted_button_id" value="PDSFLDY89GAUG">
       <table>
-      <tr><td><input type="hidden" name="on0" value="Membership Options">Choose Membership Options to Check Out:</td></tr><tr><td><select name="os0">
-        <option value="RD - Now through May 2019">RD - Now through May <%= @second_year %> $51.81 USD</option>
-        <option value="RD - Now through May 2018">RD - Now through May <%= @first_year %> $18.86 USD</option>
-        <option value="Student - Now through May 2019">Student - Now through May <%= @second_year %> $31.20 USD</option>
-        <option value="Student - Now through May 2018">Student - Now through May <%= @first_year %> $10.61 USD</option>
+      <tr><td><input type="hidden" name="on0" value="Membership Options">Membership Options</td></tr><tr><td><select name="os0">
+        <option value="RD - Now through May 2019">RD - Now through May <%= @first_year %> $20.88 USD</option>
+        <option value="Student - Now through May 2019">Student - Now through May <%= @first_year %> $10.61 USD</option>
       </select> </td></tr>
       </table>
       <input type="hidden" name="currency_code" value="USD">
       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
       <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
       </form>
-
     </div>
   </div>
   <h6 class="header col s12 light">PayPal charges an additional fee of less than $2 per transaction. The total cost, including fees, is listed in the dropdown above. If you prefer not to pay this additional fee, you can pay by check or cash at our next <%= link_to "event", events_path%>.</h6>
