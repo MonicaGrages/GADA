@@ -34,6 +34,7 @@ class Member < ApplicationRecord
     if save
       self.notices = ["New member #{first_name} #{last_name} was successfully saved."]
       subscribe_to_mailchimp
+      send_welcome_email
     else
       errors[:base] << "There was an error adding member #{first_name} #{last_name}. Please make sure fields are correctly filled out and try again."
     end
@@ -60,6 +61,11 @@ class Member < ApplicationRecord
       return errors[:base] << "Unable to subscribe member to MailChimp #{list_type} List. Please add manually."
     end
     self.notices << "Member successfully subscribed to Mailchimp #{list_type} List."
+  end
+
+  def send_welcome_email
+    return unless email == 'webmaster@eatrightlanta.org'
+    MemberMailer.with(member: self).welcome_email.deliver
   end
 
 end

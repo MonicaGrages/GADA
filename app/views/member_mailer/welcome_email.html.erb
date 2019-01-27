@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2 class="header center orange-text">HOORAY</h2>
+    <h3 class="header center light">Thank you for joining GADA, <%= member.first_name %>!</h3>
+    <br>
+    <h5 class="center header light teal-text">The GADA membership year runs from June 1 to May 31.</h5>
+    <h5 class="center header light">You can confirm the status of your membership at any time <b><%= link_to "here", member_search_url, class: 'teal-text' %></b>.</h5>
+    <br>
+    <h5 class="center header light red-text">The email address we have on file for you is <%= member.email %>.</h5>
+    <h5 class="center header light red-text">If you prefer to receive updates at a different email address, <b><%= link_to "let us know", 'mailto:secretary@eatrightatlanta.org', class: 'red-text' %></b>!</h5>
+    <br>
+    <h6 class="header center">In the meantime, check out our upcoming <b><%= link_to "events", events_url, class: 'green-text' %></b>, read our <b><%= link_to "blog", blogs_url, class: 'blue-text' %></b>, and get to know your <b><%= link_to "board members", board_members_url, class: 'orange-text' %></b>.</h6>
+    <h6 class="header center">If you have any questions about GADA or your membership, don't hesitate to email us at <b><a class='red-text' href="mailto:secretary@eatrightatlanta.org">secretary@eatrightatlanta.org.</a></b></h6>
+  </body>
+</html>
