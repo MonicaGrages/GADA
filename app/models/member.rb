@@ -64,8 +64,7 @@ class Member < ApplicationRecord
   end
 
   def send_welcome_email
-    return unless email == 'webmaster@eatrightlanta.org'
-    MemberMailer.with(member: self).welcome_email.deliver
+    return unless email == 'webmaster@eatrightatlanta.org'
+    MemberMailer.with(member: self).welcome_email.deliver_now
   end
-
 end
