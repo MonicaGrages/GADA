@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :blogs
   resources :events
   resources :board_members
+  resources :announcements
 
   get 'registration', to: "registration#index", as: "registration"
   get 'registration/success', to: 'registration#success', as: 'success'

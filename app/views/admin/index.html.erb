@@ -4,7 +4,7 @@
 
 <div class="section" id="admin-nav">
   <div class="row text-center">
-    <div class="col s12 m3 center">
+    <div class="col s12 m4 center">
       <div class="icon-block">
         <h2 class="center"><i class="material-icons">person_add</i></h2>
         <h5 class="center">Members</h5>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="col s12 m3 center">
+    <div class="col s12 m4 center">
       <div class="icon-block">
         <h2 class="center"><i class="material-icons">event</i></h2>
         <h5 class="center">Events</h5>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="col s12 m3 center">
+    <div class="col s12 m4 center">
       <div class="icon-block">
         <h2 class="center"><i class="material-icons">rss_feed</i></h2>
         <h5 class="center">Blog</h5>
@@ -34,13 +34,23 @@
       </div>
     </div>
 
-    <div class="col s12 m3 center">
+    <div class="col s12 m4 center">
       <div class="icon-block">
         <h2 class="center"><i class="material-icons">group</i></h2>
         <h5 class="center">Board Members</h5>
         <%= link_to "Add Board Member", new_board_member_path, class: "btn waves-effect waves-light" %>
         <br><br>
         <%= link_to "Update Board Members", board_members_path, class: "btn waves-effect waves-light" %>
+      </div>
+    </div>
+
+    <div class="col s12 m4 center">
+      <div class="icon-block">
+        <h2 class="center"><i class="material-icons">announcement</i></h2>
+        <h5 class="center">Announcements</h5>
+        <%= link_to "Add Announcement", new_announcement_path, class: "btn waves-effect waves-light" %>
+        <br><br>
+        <%= link_to "Update Announcements", announcements_path, class: "btn waves-effect waves-light" %>
       </div>
     </div>
   </div>

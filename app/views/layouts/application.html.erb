@@ -38,6 +38,11 @@
             <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
+        <li class="header-nav-li">
+          <%= link_to(announcements_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">announcement</i><span>Announcements</span>
+          <% end %>
+        </li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -61,6 +66,11 @@
             <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
+        <li class="header-nav-li">
+          <%= link_to(announcements_path, class: "nav-link-text waves-effect waves-teal") do %>
+            <i class="material-icons" id="blog-icon">announcement</i><span>Announcements</span>
+          <% end %>
+        </li>
         <% if user_signed_in? %>
           <li class="header-nav-li">
             <%= link_to(admin_path, class: "nav-link-text waves-effect waves-teal") do %>
@@ -79,7 +89,7 @@
     </nav>
 
     <% if user_signed_in? %>
-    <div class="admin-message">
+    <div class="admin-message center">
       <span>Logged in to admin mode as <strong><%= current_user.email %></strong>.</span>
       <span><%= link_to "Admin Menu", admin_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %></span>
     </div>
