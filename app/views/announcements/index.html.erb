@@ -18,7 +18,8 @@
         </div>
       <% end %>
       <h4 class="header teal-text"><%= announcement.title %></h4>
-      <h5 class="header light"><%= sanitize simple_format(announcement.content), tags: %w(strong em a img li ul ol p span br), attributes: %w(href src style target class) %></h5>
+      <h6 class="light "><%= announcement.created_at.strftime("%A %B %e, %Y") %></h6>
+      <div class="header light"><%= sanitize simple_format(announcement.content), tags: %w(strong em a img li ul ol p span br h1 h2 h3 h4 h5 h6), attributes: %w(href src style target class) %></div>
     </div>
     <br>
   <% end %>
