@@ -44,8 +44,6 @@ gem 'materialize-sass'
 #for datepicker
 gem 'pickadate-rails'
 
-gem 'sendgrid-ruby'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
