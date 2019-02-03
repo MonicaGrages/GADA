@@ -8,8 +8,8 @@ class MailchimpSubscriber
   end
 
   def subscribe_member
-    member_list_id = '76da82af3c'
-    potential_and_member_list_id = '009c563368'
+    member_list_id = ENV['MAILCHIMP_MEMBER_LIST_ID']
+    potential_and_member_list_id = ENV['MAILCHIMP_POTENTIAL_MEMBER_LIST_ID']
     member_list_response = post_to_mailchimp(member_list_id)
     potential_member_list_reponse = post_to_mailchimp(potential_and_member_list_id)
     [member_list_response, potential_member_list_reponse]
