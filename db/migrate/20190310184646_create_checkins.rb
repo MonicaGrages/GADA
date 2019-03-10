@@ -4,7 +4,7 @@ class CreateCheckins < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_reference :checkins, :events, foreign_key: true
-    add_reference :checkins, :members, foreign_key: true
+    add_reference :checkins, :event, foreign_key: true
+    add_reference :checkins, :member, foreign_key: true
   end
 end

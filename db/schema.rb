@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20190310184646) do
   create_table "checkins", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "events_id"
-    t.bigint "members_id"
-    t.index ["events_id"], name: "index_checkins_on_events_id"
-    t.index ["members_id"], name: "index_checkins_on_members_id"
+    t.bigint "event_id"
+    t.bigint "member_id"
+    t.index ["event_id"], name: "index_checkins_on_event_id"
+    t.index ["member_id"], name: "index_checkins_on_member_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -106,6 +106,6 @@ ActiveRecord::Schema.define(version: 20190310184646) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "checkins", "events", column: "events_id"
-  add_foreign_key "checkins", "members", column: "members_id"
+  add_foreign_key "checkins", "events"
+  add_foreign_key "checkins", "members"
 end
