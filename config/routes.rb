@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   put "admin/update_settings", to: "admin#update_settings", as: 'update_settings'
   post '/payment_webhook', to: 'webhooks#create', as: 'payment_webhook'
 
+  mount Events::API => '/api/events'
+  mount Members::API => '/api/members'
 end

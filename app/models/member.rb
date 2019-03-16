@@ -5,6 +5,8 @@ class Member < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :membership_type, presence: true
+  has_many :checkins
+  has_many :events, through: :checkins
 
   attr_accessor :notices
 

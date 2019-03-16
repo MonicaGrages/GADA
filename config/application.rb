@@ -29,5 +29,8 @@ module GADASite
     config.generators.system_tests = nil
 
     config.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
+
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end
