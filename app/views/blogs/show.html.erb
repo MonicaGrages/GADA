@@ -32,7 +32,7 @@
       <h4 class="header light orange-text"><%= @blog.title %></h4>
       <h5 class="light ">Written by: <%= @blog.author %></h5>
       <h5 class="light "><%= @blog.created_at.strftime("%A %B %e, %Y") %></h5>
-      <h6><%= sanitize simple_format(@blog.content), tags: %w(strong em a img li ul ol p span br), attributes: %w(href src style) %></h6>
+      <h6><%= sanitize simple_format(@blog.content), tags: %w(strong em a img li ul ol p span br), attributes: %w(href src style class) %></h6>
     </div>
 
   </div>
