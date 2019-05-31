@@ -1,21 +1,21 @@
 <div class='form-container z-depth-3'>
   <%= form_for @event, :url =>"/events/#{@event.id}" do |f| %>
-    <div class='form'>
+    <div>
       <div class='input-field'>
         <%= f.label :title, "Title", :class => "form-label" %>
         <%= f.text_field :title, :class => "validate", required: true %>
       </div>
       <div class='input-field'>
-        <%= f.label :date, "Date", :class => "form-label" %>
-        <%= f.text_field :date, :class => "datepicker", required: true %>
+        <%= f.label :date, "Date", class: 'active' %>
+        <%= f.date_field :date, required: true %>
       </div>
       <div class='input-field'>
-        <%= f.label :time, "Time", :id => "timepicker-label", :class => "form-label" %>
-        <%= f.text_field :time, :class => "timepicker", :id => "timepicker", required: false %>
+        <%= f.label :time, "Time", class: 'active' %>
+        <%= f.time_field :time, required: false %>
       </div>
       <div class='input-field'>
-        <%= f.label :image_url, "Link to hosted image", :class => "form-label" %>
-        <%= f.text_field :image_url, :class => "validate", :placeholder => "a direct https link to a hosted image. ex: https://i.imgur.com/nLJvnz4.png" %>
+        <%= f.label :image_url, "Link to hosted image", :class => "active" %>
+        <%= f.text_field :image_url, :class => "validate", :placeholder => "Optional - a direct https link to a hosted image. ex: https://i.imgur.com/nLJvnz4.png" %>
       </div>
       <div class='input-field'>
         <%= f.label :description, "Description", :id => "event-description-form-text-area" , :class => "form-label" %>
@@ -31,10 +31,10 @@
       </div>
       <div class='input-field'>
         <%= f.label :link_text, "Link Text", :class => "active"%>
-        <%= f.text_field :link_text, :placeholder => "What text should appear to lead to link above? Ex: 'RSVP on evite'" %>
+        <%= f.text_field :link_text, :placeholder => "Required if using Link - What text should appear to lead to link above? Ex: 'RSVP on evite'" %>
       </div>
 
-      <div class='form_button_container'>
+      <div class='form_button_container center'>
         <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large' %>
         <%= link_to "Nevermind", admin_path, :class => 'waves-effect waves-light btn-large deep-orange hoverable' %>
       </div>

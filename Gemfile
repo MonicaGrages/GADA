@@ -41,10 +41,8 @@ gem 'jquery-turbolinks'
 #CSS framework
 gem 'materialize-sass'
 
-#for datepicker
-gem 'pickadate-rails'
-
 gem 'grape'
+gem 'rack-cors'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
