@@ -29,6 +29,12 @@ class Member < ApplicationRecord
     self
   end
 
+  def subscribe_to_mailchimp
+    mailchimp_response = MailchimpSubscriber.new(self).subscribe_member
+    list_subscription_successful?(mailchimp_response[0], 'Current Members')
+    list_subscription_successful?(mailchimp_response[1], 'Current and Potential Members')
+  end
+
   private
 
   def save_new_member
@@ -36,9 +42,10 @@ class Member < ApplicationRecord
     if save
       self.notices = ["New member #{first_name} #{last_name} was successfully saved."]
       subscribe_to_mailchimp
-    else
-      errors[:base] << "There was an error adding member #{first_name} #{last_name}. Please make sure fields are correctly filled out and try again."
+      return
     end
+    errors[:base] << "There was an error adding member #{first_name} #{last_name}. " +
+                     'Please make sure fields are correctly filled out and try again.'
   end
 
   def renew_member
@@ -50,15 +57,13 @@ class Member < ApplicationRecord
     end
   end
 
-  def subscribe_to_mailchimp
-    mailchimp_response = MailchimpSubscriber.new(self).subscribe_member
-    list_subscription_successful?(mailchimp_response[0], '2018-2019 Members')
-    list_subscription_successful?(mailchimp_response[1], 'Current and Potential Members')
-  end
-
   def list_subscription_successful?(response, list_type)
     if response.code != '200'
-      puts response
+      puts response.body
+      if response.body && JSON.parse(response.body) && JSON.parse(response.body)['title'] == 'Member Exists'
+        self.notices << "Member already subscribed to Mailchimp #{list_type} List."
+        return
+      end
       return errors[:base] << "Unable to subscribe member to MailChimp #{list_type} List. Please add manually."
     end
     self.notices << "Member successfully subscribed to Mailchimp #{list_type} List."

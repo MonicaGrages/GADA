@@ -1,6 +1,8 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!
 
+  UPDATE_ERROR_MESSAGE = "Error updating member info. Please make sure all information was filled in and try again."
+
   def index
     @active_members = Member.where('membership_expiration_date > ?', Date.today).order('last_name ASC')
     @active_member_count = @active_members.count
@@ -38,9 +40,13 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to "/members", notice: "Member #{@member.first_name} #{@member.last_name} was successfully updated" }
+        @member.notices = ["Member information was successfully updated."]
+        renew_email_subscription
+        alert = @member.errors&.full_messages&.join(' ').presence
+        notice = @member.notices&.join(' ').presence
+        format.html { redirect_to "/members", alert: alert, notice: notice }
       else
-        alert = "Error updating member info. Please make sure all information was filled in correctly and try again."
+        alert = member.errors&.full_messages&.join(' ').presence || UPDATE_ERROR_MESSAGE
         format.html { redirect_to "/members/#{@member.id}/edit", alert: alert }
       end
     end
@@ -58,6 +64,7 @@ class MembersController < ApplicationController
   end
 
   private
+
   def member_params
     params.require(:member)
       .permit(:first_name, :last_name, :email, :membership_type, :membership_expiration_date)
@@ -70,4 +77,10 @@ class MembersController < ApplicationController
     @second_year = month <= 5 ? year + 1 : year + 2
   end
 
+  def renew_email_subscription
+    return unless @member.membership_expiration_date && @member.membership_expiration_date_before_last_save
+    if @member.membership_expiration_date > @member.membership_expiration_date_before_last_save
+      @member.subscribe_to_mailchimp
+    end
+  end
 end
