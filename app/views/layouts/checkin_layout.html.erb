@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Greater Atlanta Dietetic Association</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <%= csrf_meta_tags %>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/nLJvnz4.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/9836f74c3b.js"></script>
+  </head>
+
+  <body>
+    <nav class="light-blue lighten-3" role="navigation" id="header-nav">
+      <div class="nav-wrapper container">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <%= link_to checkins_path, :class => 'header-logo brand-logo' do %>
+          <svg width="250px" height="140px" viewBox="0 0 401 296" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+              <title>GADA Logo</title>
+              <desc>Created with Sketch.</desc>
+              <defs>
+                  <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-1">
+                      <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+                  </filter>
+                  <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-2">
+                      <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+                  </filter>
+                  <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-3">
+                      <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+                  </filter>
+                  <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-4">
+                      <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+                  </filter>
+              </defs>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Combined-Shape" transform="translate(0.000000, -0.000000)">
+                      <path d="M250.996095,61.7343649 L274.450554,61.7343649 L274.450554,65.8334415 L282.892696,65.8334415 L282.892696,240.357785 L291.04829,240.357785 L291.04829,244.280324 L295.870434,244.280324 L295.870434,248 L305.609671,248 L305.609671,184.339652 L393,184.339652 L393,7 L8,7 L8,87.0132946 L11.4826592,87.0132946 L11.4826592,75.95957 L17.1169709,75.95957 L17.1169709,72.9119754 L22.2443133,72.9119754 L22.2443133,56.2617027 L50.5735582,56.2617027 L50.5735582,72.9119754 L54.3190276,72.9119754 L54.3190276,75.95957 L59.0530024,75.95957 L59.0530024,79.6265944 L59.0530024,87.0132946 L63.4444763,87.0132946 L63.4444763,95.6698259 L68.3581794,95.6698259 L68.3581794,184.339652 L76.1136239,184.339652 L76.1136239,167.701768 L87.6620131,167.701768 L87.6620131,108.290708 L101.580781,108.290708 L101.580781,95.6698259 L190.386894,95.6698259 L190.386894,201.648069 L199.759045,201.648069 L199.759045,226.615735 L213.604056,226.615735 L213.604056,59.3944688 L224.421663,59.3944688 L224.421663,65.8334415 L234.074428,65.8334415 L234.074428,61.7343649 L248.003905,61.7343649 L249.5,11.8645309 L250.996095,61.7343649 Z M0,0 L401,0 L401,296 L0,296 L0,0 Z" fill="#1E5A24"></path>
+                      <g id="GADA" stroke-width="1" transform="translate(17.000000, 218.864531)" fill="#FFFFFF">
+                          <path d="M28.3380896,29.6422498 L48.6323242,29.6422498 L48.6323242,31.5511705 C48.6323242,35.8930513 48.1976036,39.7358076 47.3281493,43.0795548 C46.4799012,46.1737687 45.0485039,49.0683124 43.0339147,51.7632728 C38.4745811,57.8019805 32.6747716,60.8212891 25.6343123,60.8212891 C18.7635026,60.8212891 12.8788696,57.9017924 7.98023674,52.0627114 C3.0816039,46.1986771 0.632324219,39.1619415 0.632324219,30.9522934 C0.632324219,22.567972 3.12401567,15.4563775 8.10747332,9.61729655 C13.090931,3.75326224 19.155814,0.821289062 26.3023043,0.821289062 C30.140627,0.821289062 33.7244216,1.7445487 37.0537954,3.59109568 C40.2347258,5.43764265 43.3625938,8.43199823 46.4374932,12.5742523 L41.1571751,18.5255935 C37.1279966,12.2123991 32.2188343,9.05584926 26.4295409,9.05584926 C21.2340212,9.05584926 16.8762119,11.1643747 13.3559823,15.3814887 C9.83575261,19.5237427 8.07566418,24.7139591 8.07566418,30.9522934 C8.07566418,37.3902545 10.0372085,42.6927592 13.960356,46.8599665 C17.6290291,50.7277339 21.6051325,52.6615885 25.8887855,52.6615885 C29.5362523,52.6615885 32.8125615,51.2143166 35.7178113,48.3197295 C38.6230611,45.400189 40.2453113,41.9067742 40.5846105,37.8393801 L28.3380896,37.8393801 L28.3380896,29.6422498 Z" id="G" fill-rule="nonzero" filter="url(#filter-1)"></path>
+                          <path d="M134.66489,46.4243173 L113.526982,46.4243173 L108.026649,60.1354691 L100,60.1354691 L124.431712,0.135469062 L148,60.1354691 L139.845436,60.1354691 L134.66489,46.4243173 Z M132,38.1354691 L124.675906,19.1354691 L117,38.1354691 L132,38.1354691 Z" id="A" fill-rule="nonzero" filter="url(#filter-2)"></path>
+                          <path d="M350.66489,46.4243173 L329.526982,46.4243173 L324.026649,60.1354691 L316,60.1354691 L340.431712,0.135469062 L364,60.1354691 L355.845436,60.1354691 L350.66489,46.4243173 Z M348,38.1354691 L340.675906,19.1354691 L333,38.1354691 L348,38.1354691 Z" id="A" fill-rule="nonzero" filter="url(#filter-3)"></path>
+                          <path d="M214,60.1354691 L214,0.135469062 L224.854271,0.135469062 C230.058094,0.135469062 234.167489,0.731318025 237.18258,1.92303383 C240.42101,3.08884277 243.357887,5.07068823 245.9933,7.86862968 C251.331127,13.5163263 254,20.9385319 254,30.1354691 C254,39.3583131 251.219458,46.8193784 245.658291,52.5188888 C242.866541,55.3686439 239.94083,57.3504894 236.881072,58.4644846 C234.02232,59.5784798 229.968759,60.1354691 224.720268,60.1354691 L214,60.1354691 Z M221,51.1354691 L224.615702,51.1354691 C228.219945,51.1354691 231.215782,50.7078061 233.603306,49.8524673 C235.990829,48.9452897 238.148751,47.5067869 240.077135,45.5369157 C244.025731,41.4675765 246,36.1671473 246,29.6354691 C246,23.0519521 244.048688,17.7126445 240.146006,13.6173859 C236.633591,9.96275639 231.456875,8.13546906 224.615702,8.13546906 L221,8.13546906 L221,51.1354691 Z" id="D" fill-rule="nonzero" filter="url(#filter-4)"></path>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+        <% end %>
+        <ul id="header-nav-links" class="right hide-on-med-and-down">
+          <li class="header-nav-li">
+              <%= link_to(checkins_path, class: "nav-link-text waves-effect waves-teal") do %>
+                <h3>Start Over</h3>
+              <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h4 class="notice header center green-text light container"><%= @notice %></h4>
+    <br>
+
+    <%= yield %>
+
+    <footer class="page-footer orange">
+      <div class="container">
+        <div class="row footer-main">
+          <div>
+            <ul class='social-links-list'>
+              <li>
+                <a class="white-text social-links" href="https://www.instagram.com/eatrightatl/">
+                  <i class="fa fa-instagram fa-2x hoverable" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="https://www.facebook.com/eatrightATL">
+                  <i class="fa fa-facebook-square fa-2x hoverable" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="https://www.linkedin.com/groups/3785630">
+                  <i class="fa fa-linkedin-square fa-2x hoverable" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="https://twitter.com/EatRightATL">
+                  <i class="fa fa-twitter-square fa-2x hoverable" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="white-text social-links" href="mailto:Secretary@eatrightatlanta.org">
+                  <i class="fa fa-envelope-square fa-2x hoverable" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        <h6 class="white-text header light">&copy; Greater Atlanta Dietetic Association</h6>
+        <h6><a class="white-text header light" href="mailto:Secretary@eatrightatlanta.org">Secretary@eatrightatlanta.org</a></h6>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

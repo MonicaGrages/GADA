@@ -50,10 +50,40 @@ class EventsController < ApplicationController
     end
   end
 
+  def member_search
+    event = Event.find(params[:event_id])
+    lookup_params = member_search_params[:member_info]
+    @members = Member.where('email ilike ?', "%#{lookup_params}%")
+                     .or(Member.where('first_name ilike ?', "%#{lookup_params}%"))
+                     .or(Member.where('last_name ilike ?', "%#{lookup_params}%"))
+    results = @members.map do |member|
+      checked_in = Checkin.where(member_id: member.id, event_id: event.id).present?
+      member.attributes.slice(*%w(id first_name last_name email)).merge(expired: member.expired?,
+                                                                        checked_in: checked_in)
+    end
+    render json: results.to_json
+  end
+
+  def renew
+    @member = Member.where(id: params[:member_id]).first
+    @event = Event.find(params[:event_id])
+    if @member.present?
+      Checkin.where(event: @event, member_id: @member.id).first_or_create
+    else
+      Checkin.create(event: @event, member_id: nil)
+    end
+
+    render :layout => 'checkin_layout'
+  end
+
   private
+
   def event_params
     params.require(:event)
       .permit(:title, :date, :time, :description, :location, :link, :link_text, :image_url)
   end
 
+  def member_search_params
+    params.permit(:member_info)
+  end
 end

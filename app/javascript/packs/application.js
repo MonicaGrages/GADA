@@ -15,4 +15,9 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import ReactOnRails from 'react-on-rails';
+import MemberSearch from '../components/Checkins/MemberSearch';
+
+ReactOnRails.register({
+  MemberSearch
+});

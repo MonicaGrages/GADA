@@ -1,0 +1,6 @@
+<div class="container center">
+  <h4 class="header col s12 light">Check in for <%= @event&.title %></h4>
+
+  <%= react_component('MemberSearch', props: { eventId: @event.id }) %>
+
+</div>

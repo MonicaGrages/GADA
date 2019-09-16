@@ -1,0 +1,21 @@
+<h2 class="header center orange-text">Please check in by selecting an event below</h2>
+
+<div class="container">
+  <% if @events.length == 0 %>
+    <h4 class="header light center">OOPS! something went wrong. Please ask a board member for help.</h4>
+  <% end %>
+
+  <% @events.each do |event| %>
+    <%= link_to new_event_checkin_path(event) do %>
+      <div class="form-container z-depth-3">
+        <h4 class="header teal-text"><%= event.title %></h4>
+        <h5 class="header light"><%= event.date.strftime("%A %B %e, %Y") %></h5>
+        <% if event.time %>
+          <h5 class="event-time header light"><%= event.time.strftime("%l:%M %p") %></h5>
+        <% end %>
+        <h5 class="header light"><%= simple_format(event.location) %></h5>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+</div>

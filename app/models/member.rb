@@ -35,6 +35,10 @@ class Member < ApplicationRecord
     list_subscription_successful?(mailchimp_response[1], 'Current and Potential Members')
   end
 
+  def expired?
+    membership_expiration_date < Date.today
+  end
+
   private
 
   def save_new_member
