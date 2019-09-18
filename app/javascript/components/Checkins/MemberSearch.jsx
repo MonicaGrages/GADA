@@ -30,7 +30,7 @@ export default class MemberSearch extends React.Component {
     return (
       <div className="">
         <div className=''>
-          <h5 className='header center light blue-text'>Already a member? Start typing your last name OR first name OR email address</h5>
+          <h5 className='header center light blue-text'>Already a GADA member? Start typing your <b>last name</b> OR <b>first name</b> OR <b>email address</b></h5>
           <div className="form-container z-depth-3">
             <input name="query" type="text" placeholder="Start typing..." onChange={this.onChange} autoComplete="off" />
             <span onClick={this.submit} className='btn btn-small hoverable'>
