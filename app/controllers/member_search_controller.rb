@@ -23,7 +23,6 @@ class MemberSearchController < ApplicationController
   private
 
   def member_params
-    params.require("/member_search/results")
-      .permit("email")
+    params.require("/member_search/results").permit("email")
   end
 end

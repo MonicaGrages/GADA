@@ -5,7 +5,18 @@ module Members
 
     get do
       authorize
-      members = Member.all
+      Member.all
+    end
+
+    params do
+      requires :email
+    end
+    get :search do
+      authorize
+      member = Member.find_by(email: params[:email].downcase)
+      return member if member && !member.expired?
+
+      error!('Member not found', 404)
     end
 
     params do
@@ -13,12 +24,10 @@ module Members
       requires :last_name
       requires :email
       requires :membership_type
-      requires :membership_expiration_date
     end
     post do
       authorize
-      member = Member.new(params)
-      member.create_membership
+      member = Member.new(params).create_membership
       return member if member.valid?
       error!(member.errors&.full_messages&.first, 400)
     end

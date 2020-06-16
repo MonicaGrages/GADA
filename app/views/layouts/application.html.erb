@@ -50,7 +50,7 @@
       <% end %>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
-        <li class="header-nav-li">
+        <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
             <i class="material-icons" id="blog-icon">person_add</i><span>Membership</span>
           <% end %>
@@ -88,7 +88,7 @@
             <i class="material-icons" id="blog-icon">rss_feed</i><span>Blog</span>
           <% end %>
         </li>
-        <li class="header-nav-li">
+        <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
             <i class="material-icons" id="blog-icon">person_add</i><span>Membership</span>
           <% end %>

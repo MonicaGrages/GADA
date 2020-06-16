@@ -1,5 +1,6 @@
 class Member < ApplicationRecord
   before_validation :downcase_email
+  after_initialize :assign_default_expiration_date
 
   validates :email, uniqueness: true, presence: true
   validates :first_name, presence: true
@@ -19,14 +20,14 @@ class Member < ApplicationRecord
   def create_membership
     if @existing_member = Member.where(email: email&.downcase).first
       if @existing_member.membership_expiration_date < membership_expiration_date
-        renew_member
+        @updated_member = renew_member
       elsif @existing_member.membership_expiration_date >= membership_expiration_date
         errors[:base] << "There is already a current member with the email #{@existing_member.email}. If you need to update this member's info, go to the Admin Menu and click 'Current Members'."
       end
     else
       save_new_member
     end
-    self
+    @updated_member || self
   end
 
   def subscribe_to_mailchimp
@@ -37,6 +38,17 @@ class Member < ApplicationRecord
 
   def expired?
     membership_expiration_date < Date.today
+  end
+
+  def assign_default_expiration_date
+    self.membership_expiration_date = membership_expiration_date || default_expiration_date
+  end
+
+  def default_expiration_date
+    current_year = Time.now.year
+    exp_year = Time.now.month <= 5 ? current_year : current_year + 1
+
+    "#{exp_year}-05-31"
   end
 
   private
@@ -56,6 +68,7 @@ class Member < ApplicationRecord
     if @existing_member.update(self.serializable_hash.except(*RECORD_SPECIFIC_FIELDS))
       self.notices = ["Membership for #{first_name} #{last_name} was successfully renewed."]
       subscribe_to_mailchimp
+      @existing_member
     else
       errors[:base] << "Error renewing membership for #{first_name} #{last_name}. Please make sure fields are correctly filled out and try again. Or go to update members page from admin menu."
     end
