@@ -39,7 +39,7 @@ const Registration = ({ clientAuthtoken }) => {
 
   useEffect(() => {
     if (!membershipType) return;
-    if (membershipType === 'student') return setMembershipPrice(STUDENT_PRICE);
+    if (membershipType === 'Student') return setMembershipPrice(STUDENT_PRICE);
     if (sponsorStudent) return setMembershipPrice(RD_PRICE + STUDENT_PRICE);
     setMembershipPrice(slidingScalePrice || RD_PRICE);
   }, [membershipType, sponsorStudent, slidingScalePrice]);
@@ -178,7 +178,7 @@ const Registration = ({ clientAuthtoken }) => {
                   label='RDN'
                 />
                 <FormControlLabel
-                  value='student'
+                  value='Student'
                   control={<Radio color='default' disabled={showPaymentButtons} />}
                   label='Student/Intern'
                 />
