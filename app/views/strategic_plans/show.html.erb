@@ -1,0 +1,10 @@
+<div class="container form-container z-depth-3">
+  <% if user_signed_in? %>
+    <div class="right">
+      <%= link_to("/strategic_plans/#{@strategic_plan.id}/edit") do %>
+        <i class="material-icons">edit</i>
+      <% end %>
+    </div>
+  <% end %>
+  <%= @strategic_plan.content %>
+</div>

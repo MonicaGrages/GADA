@@ -21,3 +21,6 @@ import MemberSearch from '../components/Checkins/MemberSearch';
 ReactOnRails.register({
   MemberSearch
 });
+
+require("trix")
+require("@rails/actiontext")

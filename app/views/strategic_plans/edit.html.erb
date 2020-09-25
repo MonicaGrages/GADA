@@ -1,0 +1,14 @@
+<%= javascript_pack_tag 'application' %>
+
+<div class='container'>
+  <h3 class="header center light">Edit Strategic Plan</h3>
+  <%= form_for @strategic_plan, url: "/strategic_plans/#{@strategic_plan.id}" do |form| %>
+    <div class="field">
+      <%= form.rich_text_area :content %>
+    </div>
+    <br>
+    <div class='form_button_container center'>
+      <%= form.submit "Submit", :class => 'waves-effect waves-light btn' %>
+    </div>
+  <% end %>
+</div>

@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   post '/payment_webhook', to: 'webhooks#create', as: 'payment_webhook'
   get '/checkins', to: 'checkins#index', as: 'checkins'
 
+  get '/strategic_plan', to: 'strategic_plans#show', as: 'strategic_plan'
+  get '/Strategic_Plan', to: 'strategic_plans#show'
+  resources :strategic_plans, only: [:edit, :update]
+
   mount Events::API => '/api/events'
   mount Members::API => '/api/members'
 end
