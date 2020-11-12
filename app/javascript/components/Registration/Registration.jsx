@@ -109,11 +109,12 @@ const Registration = ({ clientAuthtoken }) => {
       if (response.status === 200) {
         setErrors({...errors, base: 'Your membership is already active for the current year'});
         setPaymentCompleted(true);
+      } else {
+        setShowPaymentButtons(true);
       }
     } catch {
       setShowPaymentButtons(true);
     }
-
   };
 
   const saveMembership = async () => {

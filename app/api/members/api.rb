@@ -12,7 +12,6 @@ module Members
       requires :email
     end
     get :search do
-      authorize
       member = Member.find_by(email: params[:email].downcase)
       return member if member && !member.expired?
 
