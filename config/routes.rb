@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   get '/Strategic_Plan', to: 'strategic_plans#show'
   resources :strategic_plans, only: [:edit, :update]
 
+  namespace :v1 do
+    resources :events, only: [:index]
+  end
+
   mount Events::API => '/api/events'
   mount Members::API => '/api/members'
 end
