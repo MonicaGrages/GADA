@@ -14,7 +14,7 @@
 
   <body>
     <nav class="light-blue lighten-3" role="navigation" id="header-nav">
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" data-turbolinks="false">
       <?xml version="1.0" encoding="UTF-8"?>
       <%= link_to root_path, :class => 'header-logo brand-logo' do %>
         <svg width="250px" height="140px" viewBox="0 0 401 296" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -70,9 +70,9 @@
             <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
-        <li class="header-nav-li">
+        <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(announcements_path, class: "nav-link-text waves-effect waves-teal") do %>
-            <i class="material-icons" id="blog-icon">announcement</i><span>Announcements</span>
+            <i class="fa fa-facebook-square fa-2x" id="social-icon"></i><span>Social Feed</span>
           <% end %>
         </li>
       </ul>
@@ -98,9 +98,9 @@
             <i class="material-icons" id="blog-icon">group</i><span>Board Members</span>
           <% end %>
         </li>
-        <li class="header-nav-li">
+        <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(announcements_path, class: "nav-link-text waves-effect waves-teal") do %>
-            <i class="material-icons" id="blog-icon">announcement</i><span>Announcements</span>
+            <i class="fa fa-facebook-square fa-2x" id="social-icon"></i><span>Social Feed</span>
           <% end %>
         </li>
         <% if user_signed_in? %>
