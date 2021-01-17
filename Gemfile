@@ -35,10 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'cancancan'
 
-#jquery install
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
-#CSS framework
 gem 'materialize-sass'
 
 gem 'grape'
@@ -48,8 +46,7 @@ gem 'react_on_rails', '11.3.0'
 gem 'webpacker'
 gem 'mini_racer', platforms: :ruby
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'newrelic_rpm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
