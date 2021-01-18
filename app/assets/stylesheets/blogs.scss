@@ -4,6 +4,13 @@
 
     #blog-page-main {
       padding-left: 250px;
+      z-index: -1;
+
+      .trix-content {
+        ul > li {
+          list-style-type: disc;
+        }
+      }
     }
 
     #slide-out{
@@ -24,11 +31,6 @@
       }
     }
 
-
-    #blog-page-main{
-      z-index: -1;
-    }
-
     .narrow-header-nav{
       margin-left: 300px;
       width: calc(100vw - 300px);
@@ -38,6 +40,22 @@
 
     .narrow-page-footer{
       padding-left: 300px;
+    }
+
+    .edit-blog, .new-blog {
+      .form_button_container {
+        padding-top: 30px;
+      }
+
+      .trix-button-row {
+        button.trix-button--icon-attach {
+          display: none;
+        }
+      }
+
+      #blog_body > ul > li {
+        list-style-type: disc;
+      }
     }
 
     @media only screen and (max-width : 992px) {

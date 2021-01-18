@@ -2,6 +2,8 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   load_and_authorize_resource  only: [:new, :create, :edit, :update, :destroy]
 
+  DEFAULT_BLOG_ERROR_MESSAGE = "Error saving blog post. Make sure all fields are filled in and try again."
+
   def index
     last_blog = Blog.order('created_at').last
     redirect_to blog_path(last_blog)
@@ -23,7 +25,8 @@ class BlogsController < ApplicationController
         format.html { redirect_to "/blogs", notice: "Blog was successfully created." }
         format.json { render :show, status: :created, location: @blog }
       else
-        format.html { render :new, alert: "Error creating blog. Make sure all required fields are correctly completed and try again." }
+        flash.now[:alert] = @blog.errors.full_messages&.first || DEFAULT_BLOG_ERROR_MESSAGE
+        format.html { render :new }
       end
     end
   end
@@ -39,7 +42,9 @@ class BlogsController < ApplicationController
         format.html { redirect_to "/blogs", notice: "Blog was successfully updated." }
         format.json { render :show, status: :created, location: @blog }
       else
-        format.html { redirect_to "/blogs/#{@blog.id}/edit", alert: "Error updating blog. Make sure all required fields are correctly completed and try again." }
+        format.html do
+          redirect_to "/blogs/#{@blog.id}/edit", alert: @blog.errors.full_messages&.first || DEFAULT_BLOG_ERROR_MESSAGE
+        end
       end
     end
   end
@@ -47,7 +52,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:id])
     if @blog.delete
-       redirect_to blogs_path,
+      redirect_to blogs_path,
                   notice: 'Blog post successfully deleted.'
     else
       redirect_to blogs_path,
@@ -55,12 +60,9 @@ class BlogsController < ApplicationController
     end
   end
 
-
   private
+
   def blog_params
-    params.require(:blog)
-      .permit(:title, :author, :content)
+    params.require(:blog).permit(:title, :author, :body)
   end
-
-
 end
