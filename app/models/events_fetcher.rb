@@ -16,6 +16,6 @@ class EventsFetcher
     request["Authorization"] = "Bearer #{ENV['EVENTBRITE_API_KEY']}"
     response = http.request(request)
 
-    JSON.parse(response.body)["events"]
+    JSON.parse(response.body)["events"] || []
   end
 end

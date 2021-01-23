@@ -1,2 +1,0 @@
-module MemberSearchHelper
-end

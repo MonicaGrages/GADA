@@ -46,7 +46,7 @@ const Events = ({ clientAuthtoken }) => {
             <>
               {error ?
                 <h5>{error}</h5> :
-                <h4 class="header light center">We have lots of upcoming events, but details are not available yet. Come back soon to find out more!</h4>
+                <h4 className="header light center">We have lots of upcoming events, but details are not available yet. Come back soon to find out more!</h4>
               }
             </>
           }
