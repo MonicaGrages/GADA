@@ -36,6 +36,7 @@ gem 'cancancan'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'materialize-sass'
+gem 'coffee-rails', '~> 4.2'
 
 gem 'grape'
 gem 'rack-cors'
