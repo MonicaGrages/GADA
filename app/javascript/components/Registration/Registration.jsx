@@ -32,7 +32,8 @@ const Registration = ({ clientAuthtoken }) => {
   const [paymentCompleted, setPaymentCompleted] = useState(false);
   const [processingPayment, setProcessingPayment] = useState(false);
 
-  const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+  const tokenElement = document.querySelector("meta[name='csrf-token']");
+  const csrf = tokenElement && tokenElement.getAttribute("content");
   axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   axios.defaults.headers.common['X-Auth-Token'] = clientAuthtoken;
@@ -87,7 +88,7 @@ const Registration = ({ clientAuthtoken }) => {
   const invalidEmailAddress = () => {
     if (!email) return true;
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(email))) return true;
-  }
+  };
 
   const submitForm = async () => {
     setShowPaymentButtons(false);
@@ -145,6 +146,7 @@ const Registration = ({ clientAuthtoken }) => {
               error={errors.firstName}
               onChange={onFirstNameChange}
               disabled={showPaymentButtons}
+              id='first_name'
             />
             <TextField
               label='Last Name'
@@ -153,6 +155,7 @@ const Registration = ({ clientAuthtoken }) => {
               error={errors.lastName}
               onChange={onLastNameChange}
               disabled={showPaymentButtons}
+              id='last_name'
             />
             <TextField
               label='Email'
@@ -161,6 +164,7 @@ const Registration = ({ clientAuthtoken }) => {
               error={errors.email}
               onChange={onEmailChange}
               disabled={showPaymentButtons}
+              id='email'
             />
 
             <div className='membership-type-container'>
@@ -177,11 +181,13 @@ const Registration = ({ clientAuthtoken }) => {
                   value='RD'
                   control={<Radio color='default' disabled={showPaymentButtons} />}
                   label='RDN'
+                  id='rd'
                 />
                 <FormControlLabel
                   value='Student'
                   control={<Radio color='default' disabled={showPaymentButtons} />}
                   label='Student/Intern'
+                  id='student'
                 />
               </RadioGroup>
             </div>
@@ -189,8 +195,12 @@ const Registration = ({ clientAuthtoken }) => {
             {membershipType === 'RD' && <>
               {!slidingScale && <div>
                 <label className='checkbox-container'>
-                  <Checkbox onChange={handleSponsorStudentCheckbox} disabled={showPaymentButtons} color='default' />
-                  <span className='checkbox-label'>I would like to sponsor a Student's membership for just $10 more</span>
+                  <Checkbox
+                    onChange={handleSponsorStudentCheckbox}
+                    disabled={showPaymentButtons}
+                    color='default'
+                  />
+                  <span className='checkbox-label' id='sponsor-a-student'>I would like to sponsor a Student's membership for just $10 more</span>
                 </label>
               </div>}
 
@@ -198,7 +208,7 @@ const Registration = ({ clientAuthtoken }) => {
                 <div>
                   <label className='checkbox-container'>
                     <Checkbox onChange={handleSlidingScaleCheckbox} disabled={showPaymentButtons} color='default' />
-                    <span className='checkbox-label'>I would like to (anonymously) pay less than $35 due to financial hardship</span>
+                    <span className='checkbox-label' id='sliding-scale'>I would like to (anonymously) pay less than $35 due to financial hardship</span>
                   </label>
                 </div>
                 {slidingScale &&

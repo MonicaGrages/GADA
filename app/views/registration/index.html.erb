@@ -1,7 +1,6 @@
-<script src="https://www.paypal.com/sdk/js?client-id=<%= ENV['PAYPAL_CLIENT_ID'] %>"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=<%= Rails.application.secrets[:paypal_client_id] %>"></script>
 
 <div class="container center">
-
   <h3 class="header col s12 light">Join GADA or Renew Your Membership</h3>
 
   <h5 class="header col s12 light">The GADA membership year runs from <b class='teal-text'>June 1 to May 31</b> annually.</h5>
@@ -17,7 +16,4 @@
 
   <h6 class="header col s12 light" data-turbolinks="false">PayPal charges an additional fee of less than $2 for online payments. If you prefer not to pay this additional fee, you can pay by check or cash at our next <%= link_to "event", events_path%>.</h6>
   <h6 class="header col s12 light">Payment or contributions to GADA are not deductible as charitable contributions for federal income purposes.</h6>
-
 </div>
-
-
