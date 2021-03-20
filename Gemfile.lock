@@ -175,7 +175,7 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (0.21.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -316,7 +316,7 @@ DEPENDENCIES
   materialize-sass
   mini_racer
   newrelic_rpm
-  pg (~> 0.18)
+  pg (~> 1.0)
   puma (~> 3.12)
   rack-cors
   rails (~> 6.1.3)
