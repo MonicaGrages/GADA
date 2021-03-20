@@ -2,19 +2,19 @@
   "name": "GADA-site",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^4.11.3",
     "@rails/actiontext": "^6.0.3-3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "prop-types": "^15.7.2",
+    "@rails/webpacker": "^5.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "trix": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/preset-react": "^7.0.0",
-    "@rails/webpacker": "^5.2.1",
     "webpack-dev-server": "^3.11.0"
   }
 }
