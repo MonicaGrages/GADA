@@ -154,7 +154,9 @@ GEM
     materialize-sass (0.98.2)
       sass (~> 3.3)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     mini_racer (0.2.6)
@@ -173,7 +175,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.21.0)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-accept (0.4.5)
@@ -314,7 +317,7 @@ DEPENDENCIES
   mini_racer
   newrelic_rpm
   pg (~> 0.18)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rack-cors
   rails (~> 6.0.3)
   rb-readline
