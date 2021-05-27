@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_203635) do
+ActiveRecord::Schema.define(version: 2021_05_27_205212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2021_05_27_203635) do
     t.datetime "updated_at", null: false
     t.integer "rd_membership_price"
     t.integer "student_membership_price"
+    t.boolean "offer_sliding_scale_membership_pricing", default: false, null: false
+    t.integer "minimum_sliding_scale_rd_membership_price"
   end
 
   create_table "strategic_plans", force: :cascade do |t|
