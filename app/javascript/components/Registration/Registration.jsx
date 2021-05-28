@@ -161,8 +161,10 @@ const Registration = ({
         </p>
         <p>
           <span>and membership for students and interns costs </span>
-          {discountedStudentMembershipPrice && <span><s>{`$${studentMembershipPrice}`}</s> ${discountedStudentMembershipPrice} (discounted until {studentMembershipDiscount.discount_end_date})</span>}
-          {!discountedStudentMembershipPrice && <span>${studentMembershipPrice}</span>}
+          {discountedStudentMembershipPrice ?
+            <span><s>{`$${studentMembershipPrice}`}</s> ${discountedStudentMembershipPrice} (discounted until {studentMembershipDiscount.discount_end_date})</span> :
+            <span>${studentMembershipPrice}</span>
+          }
         </p>
       </h5>
       <Accordion expanded={!showPaymentButtons && !paymentCompleted} disabled={showPaymentButtons || paymentCompleted}>
