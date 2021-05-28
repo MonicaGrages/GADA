@@ -43,8 +43,8 @@ class Member < ApplicationRecord
   end
 
   def default_expiration_date
-    current_year = Time.now.year
-    exp_year = Time.now.month <= 5 ? current_year : current_year + 1
+    current_year = Time.zone.now.year
+    exp_year = Time.zone.now.month < 5 ? current_year : current_year + 1
 
     "#{exp_year}-05-31"
   end

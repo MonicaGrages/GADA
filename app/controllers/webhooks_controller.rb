@@ -50,8 +50,8 @@ class WebhooksController < ApplicationController
   end
 
   def create_membership
-    current_year = Time.now.year
-    exp_year = Time.now.month <= 5 ? current_year : current_year + 1
+    current_year = Time.zone.now.year
+    exp_year = Time.zone.now.month < 5 ? current_year : current_year + 1
     membership_type = params[:item_name]&.downcase&.include?('student') ? 'Student' : 'RD'
     new_member = Member.new(first_name: params[:first_name],
                             last_name: params[:last_name],
