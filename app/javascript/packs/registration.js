@@ -10,5 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const clientAuthtoken = nodeToMountOn.getAttribute('data-client-authtoken');
-  ReactDOM.render(<Registration clientAuthtoken={clientAuthtoken} />, nodeToMountOn);
+  const rdMembershipPrice = JSON.parse(nodeToMountOn.getAttribute('data-rd-membership-price'));
+  const studentMembershipPrice = JSON.parse(nodeToMountOn.getAttribute('data-student-membership-price'));
+  const offerSlidingScaleMembershipPricing = JSON.parse(nodeToMountOn.getAttribute('data-offer-sliding-scale-membership-pricing'));
+  const minimumSlidingScaleRdMembershipPrice = JSON.parse(nodeToMountOn.getAttribute('data-minimum-sliding-scale-rd-membership-price'));
+
+
+  ReactDOM.render(
+    <Registration
+      clientAuthtoken={clientAuthtoken}
+      rdMembershipPrice={rdMembershipPrice}
+      studentMembershipPrice={studentMembershipPrice}
+      offerSlidingScaleMembershipPricing={offerSlidingScaleMembershipPricing}
+      minimumSlidingScaleRdMembershipPrice={minimumSlidingScaleRdMembershipPrice}
+    />,
+    nodeToMountOn
+  );
 });

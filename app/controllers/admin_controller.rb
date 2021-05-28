@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   end
 
   def update_settings
-    settings = Setting.first
+    settings = Setting.instance
     @offering_discounted_membership = settings&.offer_discounted_membership
     if settings
       respond_to do |format|

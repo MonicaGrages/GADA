@@ -1,4 +1,5 @@
 import 'core-js';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PayPalButtons from './PayPalButtons';
@@ -8,16 +9,18 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Slider from '@material-ui/core/Slider';
 import TextField from '@material-ui/core/TextField';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import './Registration.scss'
-import PriceDetails from "./PriceDetails";
 
-const Registration = ({ clientAuthtoken }) => {
-  const RD_PRICE = 35;
-  const MIN_RD_HARDSHIP_PRICE = 20;
-  const STUDENT_PRICE = 10;
+const Registration = ({
+  clientAuthtoken,
+  rdMembershipPrice,
+  studentMembershipPrice,
+  offerSlidingScaleMembershipPricing,
+  minimumSlidingScaleRdMembershipPrice,
+}) => {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -25,8 +28,8 @@ const Registration = ({ clientAuthtoken }) => {
   const [membershipType, setMembershipType] = useState('');
   const [membershipPrice, setMembershipPrice] = useState();
   const [sponsorStudent, setSponsorStudent] = useState(false);
-  const [slidingScale, setSlidingScale] = useState(false);
-  const [slidingScalePrice, setSlidingScalePrice] = useState(RD_PRICE);
+  const [showSlidingScale, setShowSlidingScale] = useState(false);
+  const [slidingScalePrice, setSlidingScalePrice] = useState(rdMembershipPrice);
   const [errors, setErrors] = useState({});
   const [showPaymentButtons, setShowPaymentButtons] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
@@ -40,16 +43,16 @@ const Registration = ({ clientAuthtoken }) => {
 
   useEffect(() => {
     if (!membershipType) return;
-    if (membershipType === 'Student') return setMembershipPrice(STUDENT_PRICE);
-    if (sponsorStudent) return setMembershipPrice(RD_PRICE + STUDENT_PRICE);
-    setMembershipPrice(slidingScalePrice || RD_PRICE);
+    if (membershipType === 'Student') return setMembershipPrice(studentMembershipPrice);
+    if (sponsorStudent) return setMembershipPrice(rdMembershipPrice + studentMembershipPrice);
+    setMembershipPrice(slidingScalePrice || rdMembershipPrice);
   }, [membershipType, sponsorStudent, slidingScalePrice]);
 
   const handleMembershipSelect = (event) => {
     setErrors({ ...errors, membershipType: false });
-    setSlidingScalePrice(RD_PRICE);
+    setSlidingScalePrice(rdMembershipPrice);
     setSponsorStudent(false);
-    setSlidingScale(false);
+    setShowSlidingScale(false);
     setMembershipType(event.target.value)
   };
 
@@ -59,12 +62,12 @@ const Registration = ({ clientAuthtoken }) => {
 
   const handleSponsorStudentCheckbox = (_event, newValue) => {
     setSponsorStudent(newValue);
-    setSlidingScalePrice(RD_PRICE);
+    setSlidingScalePrice(rdMembershipPrice);
   };
 
   const handleSlidingScaleCheckbox = (_event, newValue) => {
-    setSlidingScale(newValue);
-    setSlidingScalePrice(RD_PRICE);
+    setShowSlidingScale(newValue);
+    setSlidingScalePrice(rdMembershipPrice);
   };
 
   const onFirstNameChange = (event) => {
@@ -131,13 +134,12 @@ const Registration = ({ clientAuthtoken }) => {
 
   return (
     <>
-      <PriceDetails/>
-
-      <ExpansionPanel expanded={!showPaymentButtons && !paymentCompleted} disabled={showPaymentButtons || paymentCompleted}>
-        <ExpansionPanelSummary>
+      <h6 className='header light'>GADA membership for RDNs costs ${rdMembershipPrice}, and membership for students and interns costs ${studentMembershipPrice}.</h6>
+      <Accordion expanded={!showPaymentButtons && !paymentCompleted} disabled={showPaymentButtons || paymentCompleted}>
+        <AccordionSummary>
           <div>Step 1: Contact Information</div>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        </AccordionSummary>
+        <AccordionDetails>
           <div className='form'>
             <TextField
               label='First Name'
@@ -193,34 +195,43 @@ const Registration = ({ clientAuthtoken }) => {
             </div>
 
             {membershipType === 'RD' && <>
-              {!slidingScale && <div>
+              {!showSlidingScale && <div>
                 <label className='checkbox-container'>
                   <Checkbox
                     onChange={handleSponsorStudentCheckbox}
                     disabled={showPaymentButtons}
                     color='default'
                   />
-                  <span className='checkbox-label' id='sponsor-a-student'>I would like to sponsor a Student's membership for just $10 more</span>
+                  <span className='checkbox-label' id='sponsor-a-student'>I would like to sponsor a Student's membership for just ${studentMembershipPrice} more</span>
                 </label>
               </div>}
 
               {!sponsorStudent && <>
-                <div>
+                {offerSlidingScaleMembershipPricing && <div>
                   <label className='checkbox-container'>
                     <Checkbox onChange={handleSlidingScaleCheckbox} disabled={showPaymentButtons} color='default' />
-                    <span className='checkbox-label' id='sliding-scale'>I would like to (anonymously) pay less than $35 due to financial hardship</span>
+                    <span className='checkbox-label' id='sliding-scale'>I would like to (anonymously) pay less than ${rdMembershipPrice}</span>
                   </label>
-                </div>
-                {slidingScale &&
+                </div>}
+                {showSlidingScale &&
                 <div className='sliding-scale-price-slider'>
-                  <label className='checkbox-label'>Choose an amount $20 - $35</label>
+                  <label className='checkbox-label'>Choose an amount ${minimumSlidingScaleRdMembershipPrice} - ${rdMembershipPrice}</label>
                   <Slider
-                    defaultValue={RD_PRICE}
+                    defaultValue={rdMembershipPrice}
                     step={1}
-                    min={MIN_RD_HARDSHIP_PRICE}
-                    max={RD_PRICE}
+                    min={minimumSlidingScaleRdMembershipPrice}
+                    max={rdMembershipPrice}
                     onChange={handleSlidingScalePriceChange}
-                    marks={[{value: 20, label: '$20'}, {value: 35, label: '$35'}]}
+                    marks={[
+                      {
+                        value: minimumSlidingScaleRdMembershipPrice,
+                        label: `$${minimumSlidingScaleRdMembershipPrice}`
+                      },
+                      {
+                        value: rdMembershipPrice,
+                        label: `$${rdMembershipPrice}`
+                      }
+                    ]}
                     valueLabelDisplay='auto'
                     disabled={showPaymentButtons}
                   />
@@ -241,14 +252,14 @@ const Registration = ({ clientAuthtoken }) => {
 
             </div>
           </div>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+        </AccordionDetails>
+      </Accordion>
 
-      <ExpansionPanel disabled={!showPaymentButtons || paymentCompleted} expanded={showPaymentButtons && !paymentCompleted}>
-        <ExpansionPanelSummary>
+      <Accordion disabled={!showPaymentButtons || paymentCompleted} expanded={showPaymentButtons && !paymentCompleted}>
+        <AccordionSummary>
           <div>Step 2: Payment Information</div>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        </AccordionSummary>
+        <AccordionDetails>
           {showPaymentButtons && <div className='payment-panel-container'>
             <h5 className='header light'>Total: ${membershipPrice}</h5>
             <PayPalButtons
@@ -269,14 +280,14 @@ const Registration = ({ clientAuthtoken }) => {
               </button>
             </div>
           </div>}
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+        </AccordionDetails>
+      </Accordion>
 
-      <ExpansionPanel disabled={!paymentCompleted} expanded={paymentCompleted}>
-        <ExpansionPanelSummary>
+      <Accordion disabled={!paymentCompleted} expanded={paymentCompleted}>
+        <AccordionSummary>
           <div>Step 3: Membership Confirmation</div>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        </AccordionSummary>
+        <AccordionDetails>
           <div className='confirmation-container'>
             <h3 className='header center orange-text'>HOORAY</h3>
             <h4 className='header center light'>{errors.base ? errors.base : 'Thank you for joining GADA!'}</h4>
@@ -298,10 +309,27 @@ const Registration = ({ clientAuthtoken }) => {
               <b><a className='red-text' href='mailto:secretary@eatrightatlanta.org'> email us.</a></b>
             </h6>
           </div>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+        </AccordionDetails>
+      </Accordion>
     </>
   )
 }
+
+const { bool, number, string } = PropTypes;
+
+Registration.propTypes = {
+  clientAuthtoken: string.isRequired,
+  rdMembershipPrice: number,
+  studentMembershipPrice: number,
+  offerSlidingScaleMembershipPricing: bool,
+  minimumSlidingScaleRdMembershipPrice: number,
+};
+
+Registration.defaultProps = {
+  rdMembershipPrice: 35,
+  studentMembershipPrice: 10,
+  offerSlidingScaleMembershipPricing: false,
+  minimumSlidingScaleRdMembershipPrice: 20,
+};
 
 export default Registration;

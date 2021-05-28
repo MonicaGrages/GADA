@@ -8,7 +8,14 @@
   <%= link_to "Check Current Membership Status", member_search_path, class: "btn-large waves-effect waves-light" %>
 
   <%= javascript_pack_tag 'registration' %>
-  <div id='registration-form' data-client-authtoken=<%= ENV['CHECKIN_APP_AUTH_TOKEN'] %>></div>
+  <div
+    id='registration-form'
+    data-rd-membership-price=<%= Setting.instance&.rd_membership_price %>
+    data-student-membership-price=<%= Setting.instance&.student_membership_price %>
+    data-offer-sliding-scale-membership-pricing=<%= Setting.instance&.offer_sliding_scale_membership_pricing %>
+    data-minimum-sliding-scale-rd-membership-price=<%= Setting.instance&.minimum_sliding_scale_rd_membership_price %>
+    data-client-authtoken=<%= ENV['CHECKIN_APP_AUTH_TOKEN'] %>
+  ></div>
 
   <br>
   <h6 class='header red-text'>If you experience any issues with this page, please update your browser to the latest version.</h6>

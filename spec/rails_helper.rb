@@ -26,7 +26,7 @@ Capybara.configure do |config|
   config.app_host = "http://localhost:7000"
   config.server_host = "localhost"
   config.server_port = "7000"
-  config.asset_host = "http://localhost:7000"
+  config.asset_host = "http://localhost:3035"
   config.always_include_port = true
   config.server = :puma
   config.default_driver = :headless_chrome # change to :chrome to see test run in browser

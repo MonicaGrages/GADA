@@ -25,8 +25,7 @@ class RegistrationController < ApplicationController
   end
 
   def offering_discounted_membership?
-    settings = Setting.first
+    settings = Setting.instance
     @offering_discounted_membership = settings&.offer_discounted_membership
-    @offering_discounted_membership
   end
 end

@@ -51,6 +51,11 @@ describe "registration", type: :feature do
         expect(page).to have_content "Total: $35"
       end
 
+      it "does not offer sliding scale payment" do
+        expect(page).to_not have_content("I would like to (anonymously) pay less than $35")
+        expect(page).not_to have_selector("#sliding-scale")
+      end
+
       context "when 'sponsor a student member' is selected" do
         before { find_by_id("sponsor-a-student").click }
 
@@ -60,22 +65,8 @@ describe "registration", type: :feature do
         end
 
         it "does not offer sliding scale payment" do
-          expect(page).to_not have_content("I would like to (anonymously) pay less than $35 due to financial hardship")
-        end
-      end
-
-      context "when sliding scale payment is selected" do
-        before { find_by_id("sliding-scale").click }
-
-        it "has a working slider" do
-          expect(page).to have_content("Choose an amount $20 - $35")
-          find(".MuiSlider-thumb").drag_to(first(".MuiSlider-markLabel"))
-          click_button "Pay Now"
-          expect(page).to have_content "Total: $20"
-        end
-
-        it "does not allow student sponsorship" do
-          expect(page).to_not have_content("I would like to sponsor a Student's membership for just $10 more")
+          expect(page).to_not have_content("I would like to (anonymously) pay less than $35")
+          expect(page).not_to have_selector("#sliding-scale")
         end
       end
     end
@@ -95,7 +86,78 @@ describe "registration", type: :feature do
       end
 
       it "does not offer sliding scale payment" do
-        expect(page).to_not have_content("I would like to (anonymously) pay less than $35 due to financial hardship")
+        expect(page).to_not have_content("I would like to (anonymously) pay less than $35")
+        expect(page).not_to have_selector("#sliding-scale")
+      end
+    end
+
+    context "when offer_sliding_scale_membership_pricing setting is enabled" do
+      before do
+        Setting.instance.update!(offer_sliding_scale_membership_pricing: true)
+        visit registration_path
+      end
+
+      context "RDN" do
+        before { find_by_id("rd").click }
+
+        it "displays the total payment due" do
+          click_button "Pay Now"
+          expect(page).to have_content "Total: $35"
+        end
+
+        it "offers sliding scale membership pricing" do
+          expect(page).to have_content("I would like to (anonymously) pay less than $35")
+        end
+
+        context "when 'sponsor a student member' is selected" do
+          before { find_by_id("sponsor-a-student").click }
+
+          it "displays the total payment due" do
+            click_button "Pay Now"
+            expect(page).to have_content "Total: $45"
+          end
+
+          it "does not offer sliding scale payment" do
+            expect(page).to_not have_content("I would like to (anonymously) pay less than $35")
+            expect(page).not_to have_selector("#sliding-scale")
+          end
+        end
+
+        context "when sliding scale payment is selected" do
+          before do
+            find_by_id("sliding-scale").click
+          end
+
+          it "has a working slider" do
+            expect(page).to have_content("Choose an amount $20 - $35")
+            find(".MuiSlider-thumb").drag_to(first(".MuiSlider-markLabel"))
+            click_button "Pay Now"
+            expect(page).to have_content "Total: $20"
+          end
+
+          it "does not allow student sponsorship" do
+            expect(page).to_not have_content("I would like to sponsor a Student's membership for just $10 more")
+          end
+        end
+      end
+
+      context "student" do
+        before do
+          find_by_id("student").click
+        end
+
+        it "displays the total payment due" do
+          click_button "Pay Now"
+          expect(page).to have_content "Total: $10"
+        end
+
+        it "does not allow student sponsorship" do
+          expect(page).to_not have_content("I would like to sponsor a Student's membership for just $10 more")
+        end
+
+        it "does not offer sliding scale payment" do
+          expect(page).to_not have_content("I would like to (anonymously) pay less than $35 due to financial hardship")
+        end
       end
     end
   end
