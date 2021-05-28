@@ -3,6 +3,11 @@ class RegistrationController < ApplicationController
 
   def index
     redirect_to discounted_membership_path if offering_discounted_membership?
+
+    @discounts = {
+      rd_membership_discount: format_discount(MembershipDiscount.best_active_rd_discount),
+      student_membership_discount: format_discount(MembershipDiscount.best_active_student_discount),
+    }
   end
 
   def discounted_membership
@@ -24,8 +29,17 @@ class RegistrationController < ApplicationController
     offering_discounted_membership?
   end
 
+  private
+
   def offering_discounted_membership?
     settings = Setting.instance
     @offering_discounted_membership = settings&.offer_discounted_membership
+  end
+
+  def format_discount(discount)
+    {
+      discount_amount_in_dollars: discount&.discount_amount_in_dollars,
+      discount_end_date: discount&.end_at&.strftime("%m/%d/%Y")
+    }.to_json
   end
 end

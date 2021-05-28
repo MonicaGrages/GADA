@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const studentMembershipPrice = JSON.parse(nodeToMountOn.getAttribute('data-student-membership-price'));
   const offerSlidingScaleMembershipPricing = JSON.parse(nodeToMountOn.getAttribute('data-offer-sliding-scale-membership-pricing'));
   const minimumSlidingScaleRdMembershipPrice = JSON.parse(nodeToMountOn.getAttribute('data-minimum-sliding-scale-rd-membership-price'));
-
+  const rdMembershipDiscount = JSON.parse(nodeToMountOn.getAttribute('data-rd-membership-discount'))
+  const studentMembershipDiscount = JSON.parse(nodeToMountOn.getAttribute('data-student-membership-discount'))
 
   ReactDOM.render(
     <Registration
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       studentMembershipPrice={studentMembershipPrice}
       offerSlidingScaleMembershipPricing={offerSlidingScaleMembershipPricing}
       minimumSlidingScaleRdMembershipPrice={minimumSlidingScaleRdMembershipPrice}
+      rdMembershipDiscount={rdMembershipDiscount}
+      studentMembershipDiscount={studentMembershipDiscount}
     />,
     nodeToMountOn
   );

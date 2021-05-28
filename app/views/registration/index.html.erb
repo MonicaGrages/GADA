@@ -14,6 +14,8 @@
     data-student-membership-price=<%= Setting.instance&.student_membership_price %>
     data-offer-sliding-scale-membership-pricing=<%= Setting.instance&.offer_sliding_scale_membership_pricing %>
     data-minimum-sliding-scale-rd-membership-price=<%= Setting.instance&.minimum_sliding_scale_rd_membership_price %>
+    data-rd-membership-discount=<%= @discounts[:rd_membership_discount] %>
+    data-student-membership-discount=<%= @discounts[:student_membership_discount] %>
     data-client-authtoken=<%= ENV['CHECKIN_APP_AUTH_TOKEN'] %>
   ></div>
 

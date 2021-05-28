@@ -20,7 +20,26 @@ const Registration = ({
   studentMembershipPrice,
   offerSlidingScaleMembershipPricing,
   minimumSlidingScaleRdMembershipPrice,
+  rdMembershipDiscount,
+  studentMembershipDiscount,
 }) => {
+  const determineDiscountedRdMembershipPrice = () => {
+    if(!rdMembershipDiscount.discount_amount_in_dollars) return;
+
+    return rdMembershipPrice - rdMembershipDiscount.discount_amount_in_dollars;
+  }
+
+  const determineDiscountedStudentMembershipPrice = () => {
+    if(!studentMembershipDiscount.discount_amount_in_dollars) return;
+
+    return studentMembershipPrice - studentMembershipDiscount.discount_amount_in_dollars;
+  };
+
+  const discountedRdMembershipPrice = determineDiscountedRdMembershipPrice();
+  const totalRdMembershipPrice = discountedRdMembershipPrice || rdMembershipPrice;
+
+  const discountedStudentMembershipPrice = determineDiscountedStudentMembershipPrice();
+  const totalStudentMembershipPrice = discountedStudentMembershipPrice || studentMembershipPrice;
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -29,7 +48,7 @@ const Registration = ({
   const [membershipPrice, setMembershipPrice] = useState();
   const [sponsorStudent, setSponsorStudent] = useState(false);
   const [showSlidingScale, setShowSlidingScale] = useState(false);
-  const [slidingScalePrice, setSlidingScalePrice] = useState(rdMembershipPrice);
+  const [slidingScalePrice, setSlidingScalePrice] = useState(totalRdMembershipPrice);
   const [errors, setErrors] = useState({});
   const [showPaymentButtons, setShowPaymentButtons] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
@@ -43,14 +62,14 @@ const Registration = ({
 
   useEffect(() => {
     if (!membershipType) return;
-    if (membershipType === 'Student') return setMembershipPrice(studentMembershipPrice);
-    if (sponsorStudent) return setMembershipPrice(rdMembershipPrice + studentMembershipPrice);
-    setMembershipPrice(slidingScalePrice || rdMembershipPrice);
+    if (membershipType === 'Student') return setMembershipPrice(totalStudentMembershipPrice);
+    if (sponsorStudent) return setMembershipPrice(totalRdMembershipPrice + totalStudentMembershipPrice);
+    setMembershipPrice(slidingScalePrice || totalRdMembershipPrice);
   }, [membershipType, sponsorStudent, slidingScalePrice]);
 
   const handleMembershipSelect = (event) => {
     setErrors({ ...errors, membershipType: false });
-    setSlidingScalePrice(rdMembershipPrice);
+    setSlidingScalePrice(totalRdMembershipPrice);
     setSponsorStudent(false);
     setShowSlidingScale(false);
     setMembershipType(event.target.value)
@@ -62,12 +81,12 @@ const Registration = ({
 
   const handleSponsorStudentCheckbox = (_event, newValue) => {
     setSponsorStudent(newValue);
-    setSlidingScalePrice(rdMembershipPrice);
+    setSlidingScalePrice(totalRdMembershipPrice);
   };
 
   const handleSlidingScaleCheckbox = (_event, newValue) => {
     setShowSlidingScale(newValue);
-    setSlidingScalePrice(rdMembershipPrice);
+    setSlidingScalePrice(totalRdMembershipPrice);
   };
 
   const onFirstNameChange = (event) => {
@@ -134,7 +153,18 @@ const Registration = ({
 
   return (
     <>
-      <h6 className='header light'>GADA membership for RDNs costs ${rdMembershipPrice}, and membership for students and interns costs ${studentMembershipPrice}.</h6>
+      <h5 className='header light'>
+        <p>
+          <span>GADA membership for RDNs costs </span>
+          {discountedRdMembershipPrice && <span><s>{`$${rdMembershipPrice}`}</s> ${discountedRdMembershipPrice} (discounted until {rdMembershipDiscount.discount_end_date})</span>}
+          {!discountedRdMembershipPrice && <span>${rdMembershipPrice}</span>}
+        </p>
+        <p>
+          <span>and membership for students and interns costs </span>
+          {discountedStudentMembershipPrice && <span><s>{`$${studentMembershipPrice}`}</s> ${discountedStudentMembershipPrice} (discounted until {studentMembershipDiscount.discount_end_date})</span>}
+          {!discountedStudentMembershipPrice && <span>${studentMembershipPrice}</span>}
+        </p>
+      </h5>
       <Accordion expanded={!showPaymentButtons && !paymentCompleted} disabled={showPaymentButtons || paymentCompleted}>
         <AccordionSummary>
           <div>Step 1: Contact Information</div>
@@ -202,25 +232,25 @@ const Registration = ({
                     disabled={showPaymentButtons}
                     color='default'
                   />
-                  <span className='checkbox-label' id='sponsor-a-student'>I would like to sponsor a Student's membership for just ${studentMembershipPrice} more</span>
+                  <span className='checkbox-label' id='sponsor-a-student'>I would like to sponsor a Student's membership for just ${totalStudentMembershipPrice} more</span>
                 </label>
               </div>}
 
               {!sponsorStudent && <>
-                {offerSlidingScaleMembershipPricing && <div>
+                {offerSlidingScaleMembershipPricing && totalRdMembershipPrice > minimumSlidingScaleRdMembershipPrice && <div>
                   <label className='checkbox-container'>
                     <Checkbox onChange={handleSlidingScaleCheckbox} disabled={showPaymentButtons} color='default' />
-                    <span className='checkbox-label' id='sliding-scale'>I would like to (anonymously) pay less than ${rdMembershipPrice}</span>
+                    <span className='checkbox-label' id='sliding-scale'>I would like to (anonymously) pay less than ${totalRdMembershipPrice}</span>
                   </label>
                 </div>}
                 {showSlidingScale &&
                 <div className='sliding-scale-price-slider'>
-                  <label className='checkbox-label'>Choose an amount ${minimumSlidingScaleRdMembershipPrice} - ${rdMembershipPrice}</label>
+                  <label className='checkbox-label'>Choose an amount ${minimumSlidingScaleRdMembershipPrice} - ${totalRdMembershipPrice}</label>
                   <Slider
-                    defaultValue={rdMembershipPrice}
+                    defaultValue={totalRdMembershipPrice}
                     step={1}
                     min={minimumSlidingScaleRdMembershipPrice}
-                    max={rdMembershipPrice}
+                    max={totalRdMembershipPrice}
                     onChange={handleSlidingScalePriceChange}
                     marks={[
                       {
@@ -228,8 +258,8 @@ const Registration = ({
                         label: `$${minimumSlidingScaleRdMembershipPrice}`
                       },
                       {
-                        value: rdMembershipPrice,
-                        label: `$${rdMembershipPrice}`
+                        value: totalRdMembershipPrice,
+                        label: `$${totalRdMembershipPrice}`
                       }
                     ]}
                     valueLabelDisplay='auto'
@@ -315,7 +345,7 @@ const Registration = ({
   )
 }
 
-const { bool, number, string } = PropTypes;
+const { bool, number, shape, string } = PropTypes;
 
 Registration.propTypes = {
   clientAuthtoken: string.isRequired,
@@ -323,6 +353,14 @@ Registration.propTypes = {
   studentMembershipPrice: number,
   offerSlidingScaleMembershipPricing: bool,
   minimumSlidingScaleRdMembershipPrice: number,
+  rdMembershipDiscount: shape({
+    discount_amount_in_dollars: number,
+    discount_end_date: string,
+  }).isRequired,
+  studentMembershipDiscount: shape({
+    discount_amount_in_dollars: number,
+    discount_end_date: string,
+  }).isRequired,
 };
 
 Registration.defaultProps = {
