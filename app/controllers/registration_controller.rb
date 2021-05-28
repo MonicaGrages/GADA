@@ -39,7 +39,7 @@ class RegistrationController < ApplicationController
   def format_discount(discount)
     {
       discount_amount_in_dollars: discount&.discount_amount_in_dollars,
-      discount_end_date: discount&.end_at&.strftime("%m/%d/%Y")
+      discount_end_date: discount&.end_at&.in_time_zone("America/New_York")&.strftime("%-m/%-d/%y")
     }.to_json
   end
 end
