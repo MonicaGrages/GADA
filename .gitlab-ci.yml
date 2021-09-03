@@ -1,0 +1,51 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Ruby.gitlab-ci.yml
+
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/ruby/tags/
+image: ruby:2.7.2
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ee/ci/docker/using_docker_images.html#what-is-a-service
+services:
+  - postgres:latest
+  - npm:latest
+
+variables:
+  POSTGRES_DB: GADA-site_development
+
+# Cache gems in between builds
+cache:
+  paths:
+    - vendor/ruby
+
+# This is a basic example for a gem or script which doesn't use
+# services such as redis or postgres
+before_script:
+  - ruby -v  # Print out ruby version for debugging
+  # Uncomment next line if your rails app needs a JS runtime:
+  - apt-get update -q && apt-get install nodejs -yqq
+  - bundle install -j $(nproc)
+  - node -v
+  - bundle config set path 'vendor' # Install dependencies into ./vendor/ruby
+  - npm install yarn
+  - yarn install
+
+rspec:
+  script:
+    - rails db:create
+    - rails db:migrate
+    - bundle exec rspec spec
+
+# This deploy job uses a simple deploy flow to Heroku, other providers, e.g. AWS Elastic Beanstalk
+# are supported too: https://github.com/travis-ci/dpl
+deploy:
+  type: deploy
+  environment: production
+  script:
+    - gem install dpl
+  only:
+    - master
