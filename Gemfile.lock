@@ -171,7 +171,8 @@ GEM
     orm_adapter (0.5.0)
     pg (1.4.3)
     public_suffix (5.0.0)
-    puma (3.12.6)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
     rack-accept (0.4.5)
@@ -316,7 +317,7 @@ DEPENDENCIES
   mini_racer
   newrelic_rpm
   pg (~> 1.4.3)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rack-cors
   rails (~> 6.1.7)
   rb-readline
