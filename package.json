@@ -16,9 +16,21 @@
     "webpack": "^4.44.1"
   },
   "devDependencies": {
+    "jest": "^29.2.1",
     "webpack-dev-server": "^3.11.0"
   },
   "engines": {
     "node": "^14.18.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "app/javascript",
+      "node_modules"
+    ],
+    "testPathIgnorePatterns": ["<rootDir>/config/", "<rootDir>/node_modules/"],
+    "verbose": true
   }
 }

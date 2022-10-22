@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { addPayPalFee } from 'helpers/feeCalculator';
 
 const PayPalButtons = ({
   membershipType,
@@ -17,14 +18,13 @@ const PayPalButtons = ({
   const PaymentButtons = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
   const createOrder = (data, actions) => {
-    const priceWithFees = (price + .49 + price * 0.0349).toFixed(2);
     return actions.order.create({
       purchase_units: [
         {
           description: membershipType,
           amount: {
             currency_code: 'USD',
-            value: priceWithFees,
+            value: addPayPalFee(price),
           },
         },
       ],
