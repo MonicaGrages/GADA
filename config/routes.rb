@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :members
   resources :blogs
   resources :board_members
-  resources :announcements
+  resources :announcements, only: :index
   resources :events, only: :index
 
   get '/strategic_plan', to: 'strategic_plans#show', as: 'strategic_plan'
