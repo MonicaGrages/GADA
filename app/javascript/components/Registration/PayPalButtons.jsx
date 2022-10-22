@@ -17,7 +17,7 @@ const PayPalButtons = ({
   const PaymentButtons = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
   const createOrder = (data, actions) => {
-    const priceWithFees = (price + .40 + price * 0.029).toFixed(2);
+    const priceWithFees = (price + .49 + price * 0.0349).toFixed(2);
     return actions.order.create({
       purchase_units: [
         {
