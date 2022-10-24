@@ -48,7 +48,7 @@
             </g>
         </svg>
       <% end %>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger button-collapse"><i class="large material-icons">menu</i></a>
       <ul id="header-nav-links" class="right hide-on-med-and-down">
         <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(registration_path, class: "nav-link-text waves-effect waves-teal") do %>
@@ -78,6 +78,11 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
+        <li class="header-nav-li sidenav-close" data-turbolinks="false">
+          <span class="nav-link-text waves-effect waves-teal">
+            <i class="material-icons" id="blog-icon">close</i>
+          </span>
+        </li>
         <li class="header-nav-li" data-turbolinks="false">
           <%= link_to(events_path, class: "nav-link-text waves-effect waves-teal") do %>
             <i class="material-icons" id="blog-icon">event</i><span>Events</span>

@@ -30,15 +30,9 @@ $(function() {
 });
 
 $( document ).on('turbolinks:load', function() {
-  $('select').material_select();
+  $('select').formSelect();
 
-  $("#blog-side-nav-expand-button").sideNav({
-    menuWidth: 300
-  });
-
-  $(".button-collapse").sideNav({
-    menuWidth: 250
-  });
+  $('.side-nav').sidenav();
 
   $('.tooltipped').tooltip({delay: 50});
 });
