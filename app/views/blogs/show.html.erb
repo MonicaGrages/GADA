@@ -1,4 +1,7 @@
 <ul id="slide-out" class="side-nav fixed yellow darken-2">
+  <div class="sidenav-close nav-link-text">
+    <i class="material-icons" id="blog-icon">close</i>
+  </div>
   <h4 class="header center teal-text light">Blog Archive</h4>
   <% @blogs.each do |blog| %>
     <li class="side-nav-li">
@@ -9,7 +12,7 @@
   <% end %>
 </ul>
 <div class="container">
-  <a class="waves-effect waves-light btn red lighten-1 hoverable sidenav-trigger" data-target="slide-out" id="blog-side-nav-expand-button">Blog Archive</a>
+  <a class="waves-effect waves-light btn orange darken-2 hoverable sidenav-trigger" data-target="slide-out" id="blog-side-nav-expand-button">Blog Archive</a>
 </div>
 
 <div class="container" id="blog-page-main">
