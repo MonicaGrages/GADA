@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { apiRequests } from 'helpers/apiRequests';
 import Event from "./Event";
 
 const Events = ({ clientAuthtoken }) => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-  axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common['X-Auth-Token'] = clientAuthtoken;
+
+  const apiClient = apiRequests(clientAuthtoken);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`/v1/events`);
+        const response = await apiClient.get(`/v1/events`);
 
         if (response.status === 200) {
           setEvents(response.data);
@@ -50,6 +48,10 @@ const Events = ({ clientAuthtoken }) => {
               }
             </>
           }
+          <h6 className="container light text-center">Our team sometimes shares photos taken at our events on social media. If
+            you plan to attend events but would not like any photos of you to be shared, please email
+            gadainfo@eatrightatlanta.org.
+          </h6>
         </>
       }
     </main>

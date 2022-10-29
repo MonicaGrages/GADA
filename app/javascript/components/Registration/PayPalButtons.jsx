@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { addPayPalFee } from 'helpers/feeCalculator';
 
 const PayPalButtons = ({
   membershipType,
-  price,
+  totalPrice,
   setPaymentCompleted,
   processingPayment,
   setProcessingPayment,
@@ -24,7 +23,7 @@ const PayPalButtons = ({
           description: membershipType,
           amount: {
             currency_code: 'USD',
-            value: addPayPalFee(price),
+            value: totalPrice,
           },
         },
       ],

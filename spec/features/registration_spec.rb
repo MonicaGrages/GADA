@@ -32,7 +32,7 @@ describe "registration", type: :feature do
       find_by_id("email").fill_in(with: member.email)
       find_by_id("rd").click
       click_button "Pay Now"
-      expect(page).to have_content "Total: $35"
+      expect(page).to have_content "Total: $36.77"
     end
   end
 
@@ -48,7 +48,7 @@ describe "registration", type: :feature do
 
       it "displays the total payment due" do
         click_button "Pay Now"
-        expect(page).to have_content "Total: $35"
+        expect(page).to have_content "Total: $36.77"
       end
 
       it "does not offer sliding scale payment" do
@@ -61,7 +61,7 @@ describe "registration", type: :feature do
 
         it "displays the total payment due" do
           click_button "Pay Now"
-          expect(page).to have_content "Total: $45"
+          expect(page).to have_content "Total: $47.13"
         end
 
         it "does not offer sliding scale payment" do
@@ -95,6 +95,9 @@ describe "registration", type: :feature do
       before do
         Setting.instance.update!(offer_sliding_scale_membership_pricing: true)
         visit registration_path
+        find_by_id("first_name").fill_in(with: "New")
+        find_by_id("last_name").fill_in(with: "Member")
+        find_by_id("email").fill_in(with: "new@member.test")
       end
 
       context "RDN" do
@@ -102,7 +105,7 @@ describe "registration", type: :feature do
 
         it "displays the total payment due" do
           click_button "Pay Now"
-          expect(page).to have_content "Total: $35"
+          expect(page).to have_content "Total: $36.77"
         end
 
         it "offers sliding scale membership pricing" do
@@ -114,7 +117,7 @@ describe "registration", type: :feature do
 
           it "displays the total payment due" do
             click_button "Pay Now"
-            expect(page).to have_content "Total: $45"
+            expect(page).to have_content "Total: $47.13"
           end
 
           it "does not offer sliding scale payment" do
@@ -132,7 +135,7 @@ describe "registration", type: :feature do
             expect(page).to have_content("Choose an amount $20 - $35")
             find(".MuiSlider-thumb").drag_to(first(".MuiSlider-markLabel"))
             click_button "Pay Now"
-            expect(page).to have_content "Total: $20"
+            expect(page).to have_content "Total: $21.23"
           end
 
           it "does not allow student sponsorship" do

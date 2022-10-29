@@ -1,7 +1,6 @@
 import 'core-js';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import PayPalButtons from './PayPalButtons';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -13,6 +12,8 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import './Registration.scss'
+import { calculateTotalCost, formattedPayPalFee } from 'helpers/feeCalculator';
+import { apiRequests } from 'helpers/apiRequests';
 
 const Registration = ({
   clientAuthtoken,
@@ -23,6 +24,8 @@ const Registration = ({
   rdMembershipDiscount,
   studentMembershipDiscount,
 }) => {
+  const apiClient = apiRequests(clientAuthtoken);
+
   const determineDiscountedRdMembershipPrice = () => {
     if(!rdMembershipDiscount.discount_amount_in_dollars) return;
 
@@ -53,12 +56,6 @@ const Registration = ({
   const [showPaymentButtons, setShowPaymentButtons] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
   const [processingPayment, setProcessingPayment] = useState(false);
-
-  const tokenElement = document.querySelector("meta[name='csrf-token']");
-  const csrf = tokenElement && tokenElement.getAttribute("content");
-  axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-  axios.defaults.headers.common['X-Auth-Token'] = clientAuthtoken;
 
   useEffect(() => {
     if (!membershipType) return;
@@ -127,7 +124,7 @@ const Registration = ({
     if(Object.values(errorsObject).find(item => item === true)) return;
 
     try {
-      const response = await axios.get(`/api/members/search?email=${email}`);
+      const response = await apiClient.get(`/api/members/search?email=${email}`);
 
       if (response.status === 200) {
         setErrors({...errors, base: 'Your membership is already active for the current year'});
@@ -148,7 +145,7 @@ const Registration = ({
       membership_type: membershipType
     };
 
-    return await axios.post('/api/members', params);
+    return await apiClient.post('/api/members', params);
   };
 
   return (
@@ -272,7 +269,7 @@ const Registration = ({
               </>}
             </>}
 
-            {membershipPrice && <h5 className='header light'>Total: ${membershipPrice}</h5>}
+            {membershipPrice && <h5 className='header light'>Membership Price: ${membershipPrice}</h5>}
             <div className='button-container'>
               <button
                 className='btn'
@@ -293,10 +290,12 @@ const Registration = ({
         </AccordionSummary>
         <AccordionDetails>
           {showPaymentButtons && <div className='payment-panel-container'>
-            <h5 className='header light'>Total: ${membershipPrice}</h5>
+            <h6 className='header light'>Membership Price: ${membershipPrice}</h6>
+            <h6 className='header light'>PayPal Fee: ${formattedPayPalFee(membershipPrice)}</h6>
+            <h5 className='header light'>Total: ${calculateTotalCost(membershipPrice)}</h5>
             <PayPalButtons
               membershipType={membershipType}
-              price={membershipPrice}
+              totalPrice={calculateTotalCost(membershipPrice)}
               processingPayment={processingPayment}
               setProcessingPayment={setProcessingPayment}
               setPaymentCompleted={setPaymentCompleted}

@@ -13,7 +13,7 @@ Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
-Capybara.register_driver :headless_chrome do |app|
+Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.load_selenium
   browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
     opts.args << "--headless"
@@ -29,8 +29,8 @@ Capybara.configure do |config|
   config.asset_host = "http://localhost:3035"
   config.always_include_port = true
   config.server = :puma
-  config.default_driver = :headless_chrome # change to :chrome to see test run in browser
-  config.javascript_driver = :headless_chrome
+  config.default_driver = :selenium # change to :chrome to see test run in browser
+  config.javascript_driver = :selenium
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
