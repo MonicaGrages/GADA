@@ -50,7 +50,7 @@ const Events = ({ clientAuthtoken }) => {
           }
           <h6 className="container light text-center">Our team sometimes shares photos taken at our events on social media. If
             you plan to attend events but would not like any photos of you to be shared, please email
-            gadainfo@eatrightatlanta.org.
+            gadainfo@gadaatl.org.
           </h6>
         </>
       }

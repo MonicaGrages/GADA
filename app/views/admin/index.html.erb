@@ -46,7 +46,7 @@
 
 <div class='container center'>
   <% if @offering_discounted_membership %>
-    <h5 class='header light'>The discounted membership renewal page is currently live. Anyone with the link can access the page at <%= link_to "https://eatrightatlanta.org/discounted_membership", discounted_membership_path, class: 'red-text', target: :_blank %>.</h5>
+    <h5 class='header light'>The discounted membership renewal page is currently live. Anyone with the link can access the page at <%= link_to "https://gadaatl.org/discounted_membership", discounted_membership_path, class: 'red-text', target: :_blank %>.</h5>
     <h6><%= link_to "Turn off discounted membership page", update_settings_path, class: "btn waves-effect waves-light hoverable btn-large red", method: :put %>
       or <%= link_to "Learn More", about_discounted_membership_path, class: 'header purple-text' %>
     </h6>

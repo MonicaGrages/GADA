@@ -1,5 +1,5 @@
 describe "login", type: :feature do
-  let(:email) { "admin@eatrightatlanta.org" }
+  let(:email) { "admin@gadaatl.org" }
   let(:password) { "correct_password" }
   let(:user) { User.create!(email: email, password: password, password_confirmation: password) }
 

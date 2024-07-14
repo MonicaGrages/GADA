@@ -337,7 +337,7 @@ const Registration = ({
 
             <h6 className='header center'>
               If you have any questions about GADA or your membership, don't hesitate to
-              <b><a className='red-text' href='mailto:gadainfo@eatrightatlanta.org'> email us.</a></b>
+              <b><a className='red-text' href='mailto:gadainfo@gadaatl.org'> email us.</a></b>
             </h6>
           </div>
         </AccordionDetails>
