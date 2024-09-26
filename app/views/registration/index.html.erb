@@ -12,7 +12,11 @@
     id='registration-form'
     data-rd-membership-price=<%= Setting.instance&.rd_membership_price %>
     data-student-membership-price=<%= Setting.instance&.student_membership_price %>
+    data-dtr-membership-price=<%= Setting.instance&.dtr_membership_price %>
+    data-retired-membership-price=<%= Setting.instance&.retired_membership_price %>
+    data-subscriber-membership-price=<%= Setting.instance&.subscriber_membership_price %>
     data-offer-sliding-scale-membership-pricing=<%= Setting.instance&.offer_sliding_scale_membership_pricing %>
+    data-offer-student-sponsorship=<%= Setting.instance&.offer_student_sponsorship %>
     data-minimum-sliding-scale-rd-membership-price=<%= Setting.instance&.minimum_sliding_scale_rd_membership_price %>
     data-rd-membership-discount=<%= @discounts[:rd_membership_discount] %>
     data-student-membership-discount=<%= @discounts[:student_membership_discount] %>

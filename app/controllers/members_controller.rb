@@ -6,8 +6,8 @@ class MembersController < ApplicationController
   def index
     @active_members = Member.where('membership_expiration_date > ?', Date.today).order('last_name ASC')
     @active_member_count = @active_members.count
-    @student_member_count = @active_members.where(membership_type: "Student").count
-    @rd_member_count = @active_members.where(membership_type: "RD").count
+    @student_member_count = @active_members.where("membership_type ilike ?", 'Student').count
+    @rd_member_count = @active_members.where("membership_type ilike ?", 'RD').count
   end
 
   def new

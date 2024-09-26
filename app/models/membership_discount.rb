@@ -11,8 +11,8 @@ class MembershipDiscount < ApplicationRecord
                                      message: "must be after Start at" }
 
   scope :active, -> { where("start_at <= ? and end_at >= ?", Time.zone.now, Time.zone.now) }
-  scope :rd, -> { where(membership_type: "RD") }
-  scope :student, -> { where(membership_type: "Student") }
+  scope :rd, -> { where("membership_type ilike ?", 'RD') }
+  scope :student, -> { where("membership_type ilike ?", 'Student') }
 
   def self.best_active_rd_discount
     MembershipDiscount.active.rd.order("discount_amount_in_dollars ASC").last
