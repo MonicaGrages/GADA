@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_22_174004) do
+ActiveRecord::Schema.define(version: 2024_09_26_143854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,10 @@ ActiveRecord::Schema.define(version: 2022_10_22_174004) do
     t.integer "student_membership_price", default: 10, null: false
     t.boolean "offer_sliding_scale_membership_pricing", default: false, null: false
     t.integer "minimum_sliding_scale_rd_membership_price", default: 20, null: false
+    t.integer "dtr_membership_price", default: 25, null: false
+    t.integer "retired_membership_price", default: 35, null: false
+    t.integer "subscriber_membership_price", default: 40, null: false
+    t.boolean "offer_student_sponsorship", default: false, null: false
   end
 
   create_table "strategic_plans", force: :cascade do |t|
