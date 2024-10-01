@@ -335,11 +335,11 @@ const Registration = ({
               <a href='/member_search' className='teal-text bold-text'> <b>here</b></a>.
             </h6>
 
-            <h6 className='header center'>You can also check out our upcoming
-              <b><a href='/events' className='green-text'> events</a></b>, read our
-              <b><a href='/blogs' className='blue-text'> blog</a></b>, and get to know your
-              <b><a href='/board_members' className='orange-text'> board members</a></b>.
-            </h6>
+            {/*<h6 className='header center'>You can also check out our upcoming*/}
+            {/*  <b><a href='/events' className='green-text'> events</a></b>, read our*/}
+            {/*  <b><a href='/blogs' className='blue-text'> blog</a></b>, and get to know your*/}
+            {/*  <b><a href='/board_members' className='orange-text'> board members</a></b>.*/}
+            {/*</h6>*/}
 
             <h6 className='header center'>
               If you have any questions about GADA or your membership, don't hesitate to
