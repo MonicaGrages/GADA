@@ -329,7 +329,7 @@ const Registration = ({
             <h3 className='header center orange-text'>HOORAY</h3>
             <h4 className='header center light'>{errors.base ? errors.base : 'Thank you for joining GADA!'}</h4>
 
-            <h6 className='center header light teal-text'>The GADA membership year runs from June 1 to May 31.</h6>
+            <h6 className='center header light teal-text'>The GADA membership year runs from September 1 to August 31.</h6>
 
             <h6 className='center header light'>You can confirm the status of your membership at any time
               <a href='/member_search' className='teal-text bold-text'> <b>here</b></a>.
