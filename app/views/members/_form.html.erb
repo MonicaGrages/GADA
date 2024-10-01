@@ -19,7 +19,7 @@
       </div>
       <div class='input-field'>
         <%= f.label :membership_expiration_date, "Member Expiration", :class => "active" %>
-        <%= f.select :membership_expiration_date, [["May 31, #{@first_year}", "#{@first_year}-05-31"], ["May 31, #{@second_year}", "#{@second_year}-05-31"]] %>
+        <%= f.select :membership_expiration_date, [["August 31, #{@first_year}", "#{@first_year}-08-31"], ["August 31, #{@second_year}", "#{@second_year}-08-31"]] %>
       </div>
       <div class='form_button_container center'>
         <%= f.submit "Submit", :class => 'waves-effect waves-light btn-large' %>

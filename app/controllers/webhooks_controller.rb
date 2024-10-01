@@ -56,7 +56,7 @@ class WebhooksController < ApplicationController
     new_member = Member.new(first_name: params[:first_name],
                             last_name: params[:last_name],
                             email: params[:payer_email],
-                            membership_expiration_date: "#{exp_year}-05-31",
+                            membership_expiration_date: "#{exp_year}-08-31",
                             membership_type: membership_type)
     new_member.create_membership
   end
