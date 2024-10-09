@@ -158,20 +158,6 @@ const Registration = ({
 
   return (
     <>
-      <h5 className='header light'>
-        <p>
-          <span>GADA membership for RDNs costs </span>
-          {discountedRdMembershipPrice && <span><s>{`$${membershipPrices.rd}`}</s> ${discountedRdMembershipPrice} (discounted until {rdMembershipDiscount.discount_end_date})</span>}
-          {!discountedRdMembershipPrice && <span>${membershipPrices.rd}</span>}
-        </p>
-        <p>
-          <span>and membership for students and interns costs </span>
-          {discountedStudentMembershipPrice ?
-            <span><s>{`$${membershipPrices.student}`}</s> ${discountedStudentMembershipPrice} (discounted until {studentMembershipDiscount.discount_end_date})</span> :
-            <span>${membershipPrices.student}</span>
-          }
-        </p>
-      </h5>
       <Accordion expanded={!showPaymentButtons && !paymentCompleted} disabled={showPaymentButtons || paymentCompleted}>
         <AccordionSummary>
           <div>Step 1: Contact Information</div>
